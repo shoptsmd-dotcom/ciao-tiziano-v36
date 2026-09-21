@@ -7,5 +7,5 @@ TiziApp V51
 - build statica senza service worker
 
 
-## V52
-Google Calendar style più fedele: liste agenda più piatte, card alleggerite, barre colore laterali, bottom nav più leggera e modali più simili a sheet.
+## V53 Portal Style
+Tema visivo ispirato al portale mostrato dall’utente: testata antracite, accento arancio, ricerca sospesa, card con intestazioni grigio chiaro, azioni blu. Tutte le funzioni della V51 restano invariate.
