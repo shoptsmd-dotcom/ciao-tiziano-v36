@@ -5024,17 +5024,17 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   will-change:transform,opacity;
 }
 .screen-swipe-next{
-  animation:gcPageFromRight 245ms cubic-bezier(.22,.72,.22,1) both!important;
+  animation:gcPageFromRight 480ms cubic-bezier(.20,.78,.24,1) both!important;
 }
 .screen-swipe-prev{
-  animation:gcPageFromLeft 245ms cubic-bezier(.22,.72,.22,1) both!important;
+  animation:gcPageFromLeft 480ms cubic-bezier(.20,.78,.24,1) both!important;
 }
 @keyframes gcPageFromRight{
-  from{opacity:.25;transform:translate3d(28px,0,0)}
+  from{opacity:.18;transform:translate3d(42px,0,0)}
   to{opacity:1;transform:translate3d(0,0,0)}
 }
 @keyframes gcPageFromLeft{
-  from{opacity:.25;transform:translate3d(-28px,0,0)}
+  from{opacity:.18;transform:translate3d(-42px,0,0)}
   to{opacity:1;transform:translate3d(0,0,0)}
 }
 .swipe-following{
@@ -5105,14 +5105,71 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
 </style>
 
 
-<!-- CIAO Tiziano V36 static clean: no service worker -->
+<!-- CIAO Tiziano V37 smooth swipe: no service worker -->
+
+<style id="v37-header-and-swipe-refine">
+/* V37 — testata illustrata in ogni sezione */
+.topbar{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:12px!important;
+  align-items:start!important;
+  margin:4px 0 18px!important;
+  padding:18px 18px 16px!important;
+  min-height:150px!important;
+  position:relative!important;
+  border-radius:28px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
+    url('./home-hero-google.jpg?v=37') center center/cover no-repeat!important;
+  box-shadow:var(--gc-shadow)!important;
+  overflow:hidden!important;
+}
+.topbar:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.48));
+  pointer-events:none;
+}
+.topbar>*{position:relative!important;z-index:1!important}
+.brand-mark{
+  font-size:34px!important;
+  line-height:1.02!important;
+  font-weight:700!important;
+  letter-spacing:-.03em!important;
+  color:#202124!important;
+  align-self:start!important;
+  margin-top:2px!important;
+}
+.topbar .search{
+  display:flex!important;
+  grid-column:1 / -1!important;
+  min-height:48px!important;
+  background:rgba(255,255,255,.72)!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+}
+.topbar .quiet-prompt-btn{
+  display:grid!important;
+  background:rgba(255,255,255,.74)!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+}
+#globalSearch::placeholder{color:transparent!important}
+@media(max-width:700px){
+  .topbar{padding:16px 16px 14px!important;border-radius:24px!important;min-height:156px!important}
+  .brand-mark{font-size:33px!important}
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
   <main class="main">
     <div class="topbar">
       <div class="brand-mark" aria-label="CIAO Tiziano">CIAO Tiziano</div>
-      <div class="search">⌕ <input id="globalSearch" placeholder="Cerca parti, luoghi, date..." /></div>
+      <div class="search">⌕ <input id="globalSearch" placeholder="" aria-label="Cerca" /></div>
       <button class="quiet-prompt-btn" id="quietPromptBtn" aria-label="Apri pannello secondario" title="">◇</button>
       <button class="btn btn-soft" id="reportBtn">▥ Report annuale</button>
       <button class="btn btn-soft" id="importBackupBtn" title="Importa un backup JSON">↥ Importa backup</button>
@@ -5547,7 +5604,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
       <section class="card">
         <div class="card-head">
           <h3>＋ Aggiungi una routine</h3>
-          <p>Salva istruzioni, procedure o promemoria che vuoi consultare e aggiornare nel tempo. · V35</p>
+          <p>Salva istruzioni, procedure o promemoria che vuoi consultare e aggiornare nel tempo. · V37</p>
         </div>
         <div class="add-wrap">
           <form id="routineForm" class="routine-form">
@@ -6552,17 +6609,7 @@ function switchSection(section, transitionDirection=''){
 
   $('globalSearch').value='';
   $('globalSearch').disabled=isHome;
-  $('globalSearch').placeholder=isActivities
-    ?'Cerca attività, persone, scadenze...'
-    :isService
-      ?'Cerca appuntamenti di servizio...'
-    :isGdp
-      ?'Cerca oratori, congregazioni, note...'
-      :isRoutine
-        ?'Cerca nelle routine...'
-        :isHome
-          ?'Cerca parti, luoghi, date...'
-          :'Cerca parti, luoghi, date...';
+  $('globalSearch').placeholder='';
 
   if(isHome)renderDashboard();
   else if(isActivities)renderActivities();
@@ -6580,7 +6627,7 @@ function switchSection(section, transitionDirection=''){
     const cls=transitionDirection==='next'?'screen-swipe-next':transitionDirection==='prev'?'screen-swipe-prev':'screen-enter';
     activeScreen.classList.add(cls);
     clearTimeout(activeScreen._ramsMotionTimer);
-    activeScreen._ramsMotionTimer=setTimeout(()=>activeScreen.classList.remove(cls),300);
+    activeScreen._ramsMotionTimer=setTimeout(()=>activeScreen.classList.remove(cls),560);
   }
 }
 $('showHomeBtn').onclick=()=>switchSection('home');
@@ -8320,8 +8367,8 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     if(!horizontal || !startScreen) return;
     const idx=order.indexOf(window.currentSection||currentSection);
     const atStart=idx<=0 && dx>0, atEnd=idx>=order.length-1 && dx<0;
-    const resistance=(atStart||atEnd)?0.10:0.24;
-    const drag=Math.max(-34,Math.min(34,dx*resistance));
+    const resistance=(atStart||atEnd)?0.08:0.32;
+    const drag=Math.max(-48,Math.min(48,dx*resistance));
     startScreen.classList.add('swipe-following');
     startScreen.style.setProperty('--swipe-drag-x',drag+'px');
   },{passive:true});

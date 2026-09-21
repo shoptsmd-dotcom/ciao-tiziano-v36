@@ -1,3 +1,3 @@
-CIAO Tiziano V36 STATIC CLEAN
+CIAO Tiziano — V37 Smooth Swipe
 
-Versione senza service worker e senza cache PWA. Caricare tutti i file nella root di un nuovo repository GitHub Pages.
+Versione statica senza service worker. Swipe tra sezioni più lento e morbido, campo ricerca senza testo precompilato/placeholder e sfondo illustrato dietro CIAO Tiziano in tutte le sezioni.
