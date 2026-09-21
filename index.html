@@ -7,7 +7,8 @@
 <meta http-equiv="Expires" content="0" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CIAO Tiziano</title>
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f1f3f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101214" media="(prefers-color-scheme: dark)">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -5537,6 +5538,163 @@ body{background:#fff!important}
 }
 </style>
 
+
+<style id="v48-links-darkmode">
+/* V48 — sfondo grigio, collegamenti JW, supporto iPhone dark mode */
+html,body{background:#f1f3f4!important}
+.shell,.main{background:transparent!important}
+
+/* Collegamenti Home */
+.jw-links-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:10px!important;
+  margin:14px 0 0!important;
+}
+.jw-links-grid .jw-home-card{
+  margin:0!important;
+  min-width:0!important;
+  padding:14px!important;
+}
+.jw-links-grid .jw-home-main{gap:10px!important}
+.jw-links-grid .jw-home-logo{
+  width:46px!important;height:46px!important;min-width:46px!important;
+  border-radius:11px!important;
+  overflow:hidden!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+}
+/* Logo JW.ORG: testo interamente contenuto nel quadrato, senza ritagli */
+.jw-logo-official{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;height:100%!important;
+  background:#52799b!important;color:#fff!important;
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-size:9.5px!important;font-weight:700!important;
+  line-height:1!important;letter-spacing:-.02em!important;
+  white-space:nowrap!important;
+}
+.wol-home-logo,.hub-home-logo{
+  display:grid!important;place-items:center!important;
+  width:100%!important;height:100%!important;
+  font-size:11px!important;font-weight:700!important;
+  line-height:1!important;letter-spacing:-.02em!important;
+}
+.wol-home-logo{background:#e8f0fe!important;color:#1a73e8!important}
+.hub-home-logo{background:#e6f4ea!important;color:#137333!important}
+.jw-links-grid .jw-home-title{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.jw-links-grid .jw-home-sub{white-space:normal!important}
+
+@media(max-width:700px){
+  .jw-links-grid{grid-template-columns:1fr!important;gap:8px!important}
+  .jw-links-grid .jw-home-card{min-height:70px!important}
+}
+
+/* Modalità scura automatica: segue l'impostazione dell'iPhone */
+@media(prefers-color-scheme:dark){
+  :root{
+    --gc-text:#f1f3f4!important;
+    --gc-muted:#aeb4bb!important;
+    --gc-muted-2:#9299a1!important;
+    --gc-line:#3a3f45!important;
+    --gc-line-soft:#2a2f34!important;
+    --gc-surface:#1b1e22!important;
+    --gc-surface-soft:#22262b!important;
+    --gc-control:#2a2f35!important;
+    --gc-blue-soft:#203a5d!important;
+    --gc-green-soft:#173c2b!important;
+    --gc-red-soft:#4a2525!important;
+    --gc-shadow:0 1px 2px rgba(0,0,0,.36),0 6px 20px rgba(0,0,0,.22)!important;
+  }
+  html,body{background:#101214!important;color:#f1f3f4!important}
+  .shell,.main{background:transparent!important}
+
+  .card,.clean-list-card,.clean-form-card,.dashboard-card,.service-total-card,
+  .speaker-booking-panel,.rightbar .legend,.jw-home-card,
+  .modal,#promptDialog,#taskPromptDialog,.mobile-prompt-dialog,
+  #routineEditDialog,.routine-reader-dialog,
+  .service-note-card,.service-notes-card,
+  .prompt-card,.timer-panel,.session,.compare-card{
+    background:#1b1e22!important;
+    color:#f1f3f4!important;
+    border-color:#30353b!important;
+    box-shadow:0 1px 2px rgba(0,0,0,.34),0 5px 18px rgba(0,0,0,.16)!important;
+  }
+
+  .topbar:before{
+    background:linear-gradient(180deg,rgba(10,12,14,.20),rgba(10,12,14,.58))!important;
+  }
+  .brand-mark{color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.25)!important}
+  .topbar .search,.topbar .quiet-prompt-btn{
+    background:rgba(28,31,35,.82)!important;
+    color:#f1f3f4!important;
+  }
+  .search input,.field input,.field select,.field textarea,
+  dialog input,dialog select,dialog textarea,
+  .prompt-search,.mobile-prompt-search{
+    background:#272b30!important;
+    color:#f1f3f4!important;
+    border-color:#3a4046!important;
+  }
+  input::placeholder,textarea::placeholder{color:#8f969e!important}
+
+  .card-head h3,.tasks-head h3,.completed-head h3,.dash-head h3,
+  .clean-title,.task-title,.activity-title,.speaker-name,.routine-name,.service-person,
+  .jw-home-title,.routine-reader-text,.routine-reader-head,.modal-head strong{
+    color:#f1f3f4!important;
+  }
+  .muted,.card-head p,.tasks-head .muted,.completed-head .muted,
+  .clean-meta,.clean-submeta,.dash-sub,.jw-home-sub,.speaker-sub,.speaker-cong,.speaker-last{
+    color:#aeb4bb!important;
+  }
+
+  .clean-row{border-bottom-color:#2b3035!important}
+  .clean-tag,.pill,.badge,.days,.native-row-menu,.iconbtn,
+  .service-time-details>summary,.liked-sort-wrap{
+    background:#292e34!important;
+    color:#c9ced4!important;
+  }
+  .native-row-menu>span{color:#b9c0c7!important}
+  .btn-ghost{color:#c4cad0!important}
+  .btn-soft,.small,.mini-btn{background:#203a5d!important;color:#8ab4f8!important}
+  .btn-primary,.clean-primary-action{background:#3d82df!important;color:#fff!important}
+  .clean-primary-action.thin-icon-button,.clean-primary-action.activity-done-icon{
+    background:#203a5d!important;color:#8ab4f8!important
+  }
+  .clean-primary-action.thin-icon-button svg,.clean-primary-action.activity-done-icon svg{stroke:#8ab4f8!important}
+
+  .section-switch{
+    background:rgba(24,27,31,.92)!important;
+    border-color:#30353b!important;
+  }
+  .section-switch button{color:#aeb4bb!important}
+  .section-switch button.active{background:#203a5d!important;color:#8ab4f8!important}
+
+  .gdp-tabs{background:#24282d!important}
+  .gdp-tabs button{color:#adb4bb!important}
+  .gdp-tabs button.active{background:#343940!important;color:#8ab4f8!important;box-shadow:none!important}
+
+  .service-total-card{background:#182f4e!important}
+  .service-time-pop{background:#202429!important;border-color:#3a4046!important}
+  .service-time-pop input{background:#292e34!important;color:#f1f3f4!important}
+
+  .jw-logo-official{background:#52799b!important;color:#fff!important}
+  .wol-home-logo{background:#203a5d!important;color:#8ab4f8!important}
+  .hub-home-logo{background:#173c2b!important;color:#81c995!important}
+  .jw-home-arrow{color:#8ab4f8!important}
+
+  dialog::backdrop,.modal::backdrop{background:rgba(0,0,0,.62)!important}
+  .routine-reader-scroll,.routine-reader-edit-pane,.mobile-prompt-shell,
+  .mobile-prompt-head,.mobile-prompt-body,.mobile-prompt-footer,
+  #promptDialog .modal-head,#promptDialog .modal-body,#promptDialog .modal-actions,
+  #taskPromptDialog .modal-head,#taskPromptDialog .modal-body,#taskPromptDialog .modal-actions{
+    background:#1b1e22!important;color:#f1f3f4!important
+  }
+  .mobile-prompt-head,.modal-head{border-bottom-color:#30353b!important}
+  .mobile-prompt-footer,.modal-actions{border-top-color:#30353b!important}
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -8683,14 +8841,19 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     $('dashImportBackupV16').onclick=()=>$('importBackupFile').click();
     $('dashExportBackupV16').onclick=()=>$('exportBtn').click();
     $('dashOpenReportV16').onclick=()=>openAnnualReport();
-    const jw=document.createElement('a');
-    jw.className='jw-home-card';
-    jw.href='https://www.jw.org/it/';
-    jw.target='_blank';
-    jw.rel='noopener noreferrer';
-    jw.setAttribute('aria-label','Apri JW.org');
-    jw.innerHTML=`<div class="jw-home-main"><div class="jw-home-logo">JW.ORG</div><div class="jw-home-copy"><div class="jw-home-title">JW.org</div><div class="jw-home-sub">Apri il sito ufficiale</div></div></div><div class="jw-home-arrow" aria-hidden="true">›</div>`;
-    util.insertAdjacentElement('afterend',jw);
+    const jwLinks=document.createElement('div');
+    jwLinks.className='jw-links-grid';
+    jwLinks.innerHTML=`
+      <a class="jw-home-card" href="https://www.jw.org/it/" target="_blank" rel="noopener noreferrer" aria-label="Apri JW.org">
+        <div class="jw-home-main"><div class="jw-home-logo"><span class="jw-logo-official">JW.ORG</span></div><div class="jw-home-copy"><div class="jw-home-title">JW.org</div><div class="jw-home-sub">Sito ufficiale</div></div></div><div class="jw-home-arrow" aria-hidden="true">›</div>
+      </a>
+      <a class="jw-home-card" href="https://wol.jw.org/it/" target="_blank" rel="noopener noreferrer" aria-label="Apri Watchtower Online Library">
+        <div class="jw-home-main"><div class="jw-home-logo"><span class="wol-home-logo">WOL</span></div><div class="jw-home-copy"><div class="jw-home-title">WOL</div><div class="jw-home-sub">Biblioteca online</div></div></div><div class="jw-home-arrow" aria-hidden="true">›</div>
+      </a>
+      <a class="jw-home-card" href="https://hub.jw.org/home/it?login_hint=tsantoro6@jwpub.org" target="_blank" rel="noopener noreferrer" aria-label="Apri Hub JW">
+        <div class="jw-home-main"><div class="jw-home-logo"><span class="hub-home-logo">HUB</span></div><div class="jw-home-copy"><div class="jw-home-title">Hub JW</div><div class="jw-home-sub">Apri Hub</div></div></div><div class="jw-home-arrow" aria-hidden="true">›</div>
+      </a>`;
+    util.insertAdjacentElement('afterend',jwLinks);
   }
 
   renderDashboard=function(){
