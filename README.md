@@ -1,6 +1,6 @@
-TiziApp — V46
+# TiziApp V47
 
-- Note di servizio rifatte da zero come rubrica permanente con +, titolo, data, testo, modifica ed elimina.
-- Le note non dipendono dal mese selezionato negli appuntamenti.
-- Indicatore Scrum nuovamente dentro una card arrotondata coerente con il resto dell’app.
+- Note di servizio: pulsante elimina dedicato e funzionante.
+- Indicatore Scrum: resta solo la card arrotondata, senza pannello rettangolare dietro.
+- Home: nuova card JW.org con collegamento diretto al sito ufficiale.
 - Build statica senza service worker.

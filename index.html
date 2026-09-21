@@ -4864,7 +4864,7 @@ body.home-mode .topbar{
   position:relative!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.18) 100%),
-    url('./home-hero-google.jpg?v=46') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=47') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5121,7 +5121,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
-    url('./home-hero-google.jpg?v=46') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=47') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5173,7 +5173,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:24px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=46') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before{
@@ -5294,7 +5294,7 @@ body{
 .topbar{
   background:
     linear-gradient(180deg,rgba(231,243,244,.04) 0%,rgba(231,243,244,.08) 58%,rgba(231,243,244,.82) 100%),
-    url('./home-hero-google.jpg?v=46') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
   box-shadow:none!important;
   border:1px solid rgba(255,255,255,.28)!important;
 }
@@ -5335,7 +5335,7 @@ body{background:#fff!important}
 .topbar{
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=46') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
   border:0!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
@@ -5371,7 +5371,7 @@ body{background:#fff!important}
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=46') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before, body.home-mode .topbar:before{
@@ -5465,6 +5465,75 @@ body{background:#fff!important}
   .service-note-form-actions{justify-content:stretch!important}
   .service-note-form-actions .btn{flex:1 1 0!important}
   .rightbar .legend{margin:12px 0 0!important;padding:14px!important;border-radius:20px!important}
+}
+</style>
+
+
+<style id="v47-notes-scrum-jw">
+/* V47 — eliminazione note esplicita, Scrum senza rettangolo esterno, card JW.org */
+.service-note-row{
+  grid-template-columns:minmax(0,1fr) 38px!important;
+}
+.service-note-delete{
+  width:36px!important;height:36px!important;min-width:36px!important;
+  display:grid!important;place-items:center!important;
+  padding:0!important;border:0!important;border-radius:50%!important;
+  background:transparent!important;color:#b3261e!important;
+  cursor:pointer!important;
+}
+.service-note-delete:hover,.service-note-delete:active{background:#fce8e6!important}
+.service-note-delete svg{
+  width:17px!important;height:17px!important;
+  fill:none!important;stroke:currentColor!important;stroke-width:1.7!important;
+  stroke-linecap:round!important;stroke-linejoin:round!important;
+}
+
+/* Il pannello laterale non crea più un secondo rettangolo dietro Scrum. */
+.rightbar{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.rightbar .legend{
+  margin:16px 0 0!important;
+  padding:16px!important;
+  border:1px solid var(--gc-line-soft)!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  box-shadow:var(--gc-shadow)!important;
+}
+
+.jw-home-card{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:14px!important;
+  margin:14px 0 0!important;
+  padding:16px!important;
+  border:1px solid var(--gc-line-soft)!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  color:var(--gc-text)!important;
+  text-decoration:none!important;
+  box-shadow:var(--gc-shadow)!important;
+  transition:transform .18s ease,box-shadow .18s ease!important;
+}
+.jw-home-card:active{transform:scale(.988)!important}
+.jw-home-main{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important}
+.jw-home-logo{
+  width:44px!important;height:44px!important;min-width:44px!important;
+  display:grid!important;place-items:center!important;
+  border-radius:12px!important;background:#587c9e!important;color:#fff!important;
+  font-size:14px!important;font-weight:700!important;letter-spacing:-.03em!important;
+}
+.jw-home-copy{min-width:0!important}
+.jw-home-title{font-size:15px!important;font-weight:600!important;color:var(--gc-text)!important}
+.jw-home-sub{margin-top:3px!important;font-size:11px!important;color:var(--gc-muted)!important}
+.jw-home-arrow{font-size:22px!important;font-weight:300!important;color:var(--gc-blue)!important;line-height:1!important}
+@media(max-width:700px){
+  .rightbar{padding-left:0!important;padding-right:0!important}
+  .rightbar .legend{margin:12px 0 0!important}
+  .jw-home-card{margin-top:12px!important}
 }
 </style>
 
@@ -8614,6 +8683,14 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     $('dashImportBackupV16').onclick=()=>$('importBackupFile').click();
     $('dashExportBackupV16').onclick=()=>$('exportBtn').click();
     $('dashOpenReportV16').onclick=()=>openAnnualReport();
+    const jw=document.createElement('a');
+    jw.className='jw-home-card';
+    jw.href='https://www.jw.org/it/';
+    jw.target='_blank';
+    jw.rel='noopener noreferrer';
+    jw.setAttribute('aria-label','Apri JW.org');
+    jw.innerHTML=`<div class="jw-home-main"><div class="jw-home-logo">JW.ORG</div><div class="jw-home-copy"><div class="jw-home-title">JW.org</div><div class="jw-home-sub">Apri il sito ufficiale</div></div></div><div class="jw-home-arrow" aria-hidden="true">›</div>`;
+    util.insertAdjacentElement('afterend',jw);
   }
 
   renderDashboard=function(){
@@ -9014,10 +9091,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
         <div class="service-note-meta">${escapeHtml(formatDate(n.date))}</div>
         <div class="service-note-preview">${escapeHtml(n.text||'')}</div>
       </div>
-      ${typeof menuHtml==='function'?menuHtml([
-        menuBtn('Modifica',`editServiceNoteV46('${n.id}')`),
-        menuBtn('Elimina',`deleteServiceNoteV46('${n.id}')`,'danger')
-      ]):''}
+      <button type="button" class="service-note-delete" title="Elimina nota" aria-label="Elimina nota" onclick="event.stopPropagation();deleteServiceNoteV46('${n.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 7.5h13M9 7.5V5.8h6v1.7M8 10.2v7M12 10.2v7M16 10.2v7M7 7.5l.7 11h8.6l.7-11"/></svg></button>
     </div>`).join(''):'<div class="empty">Nessuna nota di servizio salvata.</div>';
   }
 
