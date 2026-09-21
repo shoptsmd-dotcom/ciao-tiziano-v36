@@ -11,8 +11,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="CIAO Tiziano">
-<link rel="apple-touch-icon" href="icon-180.png?v=43">
+<meta name="apple-mobile-web-app-title" content="TiziApp">
+<link rel="apple-touch-icon" href="icon-180.png?v=44">
 
 <style>
 :root{
@@ -4864,7 +4864,7 @@ body.home-mode .topbar{
   position:relative!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.18) 100%),
-    url('./home-hero-google.jpg?v=43') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=44') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5024,17 +5024,17 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   will-change:transform,opacity;
 }
 .screen-swipe-next{
-  animation:gcPageFromRight 480ms cubic-bezier(.20,.78,.24,1) both!important;
+  animation:gcPageFromRight 680ms cubic-bezier(.22,.74,.18,1) both!important;
 }
 .screen-swipe-prev{
-  animation:gcPageFromLeft 480ms cubic-bezier(.20,.78,.24,1) both!important;
+  animation:gcPageFromLeft 680ms cubic-bezier(.22,.74,.18,1) both!important;
 }
 @keyframes gcPageFromRight{
-  from{opacity:.18;transform:translate3d(42px,0,0)}
+  from{opacity:.52;transform:translate3d(28px,0,0)}
   to{opacity:1;transform:translate3d(0,0,0)}
 }
 @keyframes gcPageFromLeft{
-  from{opacity:.18;transform:translate3d(-42px,0,0)}
+  from{opacity:.52;transform:translate3d(-28px,0,0)}
   to{opacity:1;transform:translate3d(0,0,0)}
 }
 .swipe-following{
@@ -5121,7 +5121,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
-    url('./home-hero-google.jpg?v=43') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=44') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5173,7 +5173,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:24px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=43') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=44') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before{
@@ -5294,7 +5294,7 @@ body{
 .topbar{
   background:
     linear-gradient(180deg,rgba(231,243,244,.04) 0%,rgba(231,243,244,.08) 58%,rgba(231,243,244,.82) 100%),
-    url('./home-hero-google.jpg?v=43') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=44') center 48%/cover no-repeat!important;
   box-shadow:none!important;
   border:1px solid rgba(255,255,255,.28)!important;
 }
@@ -5322,6 +5322,42 @@ body{
   .service-general-note-text-field,.service-general-note-form-actions{grid-column:1!important}
   .service-general-note-form-actions{justify-content:stretch!important}
   .service-general-note-form-actions .btn{flex:1 1 0!important}
+}
+</style>
+
+
+<style id="v44-refine">
+/* V44 — ritorno allo sfondo neutro della versione precedente */
+html,body{background:#fff!important}
+body{background:#fff!important}
+.shell{background:#fff!important}
+.main{background:transparent!important}
+.topbar{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
+    url('./home-hero-google.jpg?v=44') center 48%/cover no-repeat!important;
+  border:0!important;
+  box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
+}
+.topbar:before{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.34))!important}
+
+/* Scrum: niente riquadro esterno, resta solo il contenuto */
+.rightbar .legend{
+  margin:14px 0 0!important;
+  padding:12px 2px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.rightbar .legend #editScrumBtn{border-radius:16px!important}
+
+/* Swipe più morbido e confortevole */
+.screen-swipe-next,.screen-swipe-prev{will-change:transform,opacity!important}
+
+@media(max-width:700px){
+  .rightbar .legend{margin:10px 0 0!important;padding:10px 2px!important}
 }
 </style>
 
@@ -6402,7 +6438,7 @@ function fmt(s){return dObj(s).toLocaleDateString('it-IT',{weekday:'short',day:'
 function fmtDateTime(ms){return new Date(ms).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})}
 function promptForType(t){return prompts.find(p=>p.type.trim().toLowerCase()===t.trim().toLowerCase())?.prompt||''}
 function toast(m){const x=$('toast');x.textContent=m;x.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>x.classList.remove('show'),1700)}
-function taskStatus(t){const d=daysUntil(t.date);return d<0?['overdue',`Scaduta da ${Math.abs(d)}g`,'red']:d===0?['soon','Oggi','amber']:d===1?['soon','Domani','amber']:d<=7?['soon',`Tra ${d} giorni`,'amber']:['',`Tra ${d} giorni`,'']}
+function taskStatus(t){const d=daysUntil(t.date)-1;return d<0?['overdue',`Scaduta da ${Math.abs(d)}g`,'red']:d===0?['soon','Oggi','amber']:d===1?['soon','Domani','amber']:d<=7?['soon',`Tra ${d} giorni`,'amber']:['',`Tra ${d} giorni`,'']}
 function sessionTotalMs(t){return (t.sessions||[]).reduce((s,x)=>s+Number(x.durationMs||0),0)}
 function currentTimerMs(t){return t.timerStartedAt?Math.max(0,Date.now()-Number(t.timerStartedAt)):0}
 function actualTotalMs(t,includeRunning=true){return sessionTotalMs(t)+(includeRunning?currentTimerMs(t):0)}
@@ -8707,8 +8743,8 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     if(!horizontal || !startScreen) return;
     const idx=order.indexOf(window.currentSection||currentSection);
     const atStart=idx<=0 && dx>0, atEnd=idx>=order.length-1 && dx<0;
-    const resistance=(atStart||atEnd)?0.08:0.32;
-    const drag=Math.max(-48,Math.min(48,dx*resistance));
+    const resistance=(atStart||atEnd)?0.06:0.22;
+    const drag=Math.max(-38,Math.min(38,dx*resistance));
     startScreen.classList.add('swipe-following');
     startScreen.style.setProperty('--swipe-drag-x',drag+'px');
   },{passive:true});
@@ -8717,7 +8753,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     if(!tracking) return;
     const dx=lastX-sx, dy=lastY-sy, elapsed=Date.now()-startTime;
     const idx=order.indexOf(window.currentSection||currentSection);
-    const valid=horizontal && Math.abs(dx)>=54 && Math.abs(dx)>Math.abs(dy)*1.25 && elapsed<900;
+    const valid=horizontal && Math.abs(dx)>=50 && Math.abs(dx)>Math.abs(dy)*1.2 && elapsed<1200;
     clearDrag();
     if(!valid || idx<0) return;
     const nextIndex=dx<0?idx+1:idx-1;
