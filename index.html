@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="TiziApp">
-<link rel="apple-touch-icon" href="icon-180.png?v=44">
+<link rel="apple-touch-icon" href="icon-180.png?v=45">
 
 <style>
 :root{
@@ -4864,7 +4864,7 @@ body.home-mode .topbar{
   position:relative!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.18) 100%),
-    url('./home-hero-google.jpg?v=44') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=45') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5121,7 +5121,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
-    url('./home-hero-google.jpg?v=44') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=45') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5173,7 +5173,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:24px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=44') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=45') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before{
@@ -5294,7 +5294,7 @@ body{
 .topbar{
   background:
     linear-gradient(180deg,rgba(231,243,244,.04) 0%,rgba(231,243,244,.08) 58%,rgba(231,243,244,.82) 100%),
-    url('./home-hero-google.jpg?v=44') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=45') center 48%/cover no-repeat!important;
   box-shadow:none!important;
   border:1px solid rgba(255,255,255,.28)!important;
 }
@@ -5335,7 +5335,7 @@ body{background:#fff!important}
 .topbar{
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=44') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=45') center 48%/cover no-repeat!important;
   border:0!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
@@ -5361,6 +5361,43 @@ body{background:#fff!important}
 }
 </style>
 
+
+<style id="v45-header-notes-fix">
+/* V45 — testata identica in tutte le sezioni */
+.topbar, body.home-mode .topbar{
+  min-height:150px!important;
+  padding:18px 18px 16px!important;
+  gap:12px!important;
+  border-radius:28px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
+    url('./home-hero-google.jpg?v=45') center 48%/cover no-repeat!important;
+  box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
+}
+.topbar:before, body.home-mode .topbar:before{
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.34))!important;
+}
+.brand-mark, body.home-mode .brand-mark{
+  font-size:34px!important;
+  line-height:1.02!important;
+  font-weight:700!important;
+  letter-spacing:-.03em!important;
+  margin-top:2px!important;
+}
+.topbar .search, body.home-mode .search{
+  min-height:48px!important;
+}
+@media(max-width:700px){
+  .topbar, body.home-mode .topbar{
+    min-height:156px!important;
+    padding:16px 16px 14px!important;
+    border-radius:24px!important;
+    background-position:center 50%!important;
+  }
+  .brand-mark, body.home-mode .brand-mark{font-size:33px!important}
+  .topbar .search, body.home-mode .search{min-height:48px!important}
+}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -8826,7 +8863,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
 })();
 </script>
 
-<script id="v43-service-notes-js">
+<script id="v45-service-notes-js">
 (function(){
   let editingServiceGeneralNoteId=null;
   const formWrap=document.getElementById('serviceGeneralNoteFormWrap');
@@ -8835,14 +8872,37 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
   const dateEl=document.getElementById('serviceGeneralNoteDate');
   const textEl=document.getElementById('serviceGeneralNoteText');
   const saveBtn=document.getElementById('serviceGeneralNoteSave');
+  if(!formWrap||!form||!titleEl||!dateEl||!textEl||!saveBtn)return;
 
-  function resetGeneralNoteForm(){
+  function todayForNote(){
+    if(typeof localTodayISO==='function')return localTodayISO();
+    const d=new Date(),off=d.getTimezoneOffset();
+    return new Date(d.getTime()-off*60000).toISOString().slice(0,10);
+  }
+  function newNoteId(){
+    try{if(window.crypto&&typeof window.crypto.randomUUID==='function')return window.crypto.randomUUID()}catch(e){}
+    return 'sn_'+Date.now()+'_'+Math.random().toString(36).slice(2,9);
+  }
+  function persistServiceNotes(){
+    try{
+      localStorage.setItem(STORAGE_SERVICE_NOTES,JSON.stringify(serviceNotes));
+      return true;
+    }catch(err){
+      console.error('Errore salvataggio note servizio',err);
+      toast('Impossibile salvare la nota');
+      return false;
+    }
+  }
+  function persistAllSafely(){
+    try{save()}catch(err){console.warn('Salvataggio generale non riuscito dopo nota servizio',err)}
+  }
+  function resetGeneralNoteForm(close=true){
     editingServiceGeneralNoteId=null;
     titleEl.value='';
-    dateEl.value=typeof localTodayISO==='function'?localTodayISO():new Date().toISOString().slice(0,10);
+    dateEl.value=todayForNote();
     textEl.value='';
     saveBtn.textContent='＋ Salva nota';
-    formWrap.classList.remove('is-open');
+    if(close)formWrap.classList.remove('is-open');
   }
 
   window.renderServiceNotes=function(filter=''){
@@ -8864,9 +8924,9 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
   };
 
   window.openServiceGeneralNote=function(id){
-    const n=serviceNotes.find(x=>x.id===id);
+    const n=serviceNotes.find(x=>String(x.id)===String(id));
     if(!n)return;
-    editingServiceGeneralNoteId=id;
+    editingServiceGeneralNoteId=n.id;
     titleEl.value=n.title||'';
     dateEl.value=n.date||'';
     textEl.value=n.text||'';
@@ -8878,33 +8938,43 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
 
   window.deleteServiceGeneralNote=function(id){
     if(!confirm('Eliminare questa nota di servizio?'))return;
-    serviceNotes=serviceNotes.filter(n=>n.id!==id);
-    if(editingServiceGeneralNoteId===id)resetGeneralNoteForm();
-    save();
+    const old=[...serviceNotes];
+    serviceNotes=serviceNotes.filter(n=>String(n.id)!==String(id));
+    if(!persistServiceNotes()){serviceNotes=old;return}
+    persistAllSafely();
+    if(String(editingServiceGeneralNoteId)===String(id))resetGeneralNoteForm();
     renderServiceNotes(document.getElementById('globalSearch')?.value||'');
     toast('Nota di servizio eliminata');
   };
 
-  document.getElementById('serviceGeneralNoteAdd').addEventListener('click',()=>{
-    resetGeneralNoteForm();
+  document.getElementById('serviceGeneralNoteAdd')?.addEventListener('click',()=>{
+    resetGeneralNoteForm(false);
     formWrap.classList.add('is-open');
     setTimeout(()=>titleEl.focus(),80);
   });
-  document.getElementById('serviceGeneralNoteCancel').addEventListener('click',resetGeneralNoteForm);
+  document.getElementById('serviceGeneralNoteCancel')?.addEventListener('click',()=>resetGeneralNoteForm(true));
+
   form.addEventListener('submit',e=>{
     e.preventDefault();
+    e.stopPropagation();
     const title=titleEl.value.trim(),date=dateEl.value,text=textEl.value.trim();
-    if(!title||!date||!text)return toast('Completa nome, data e nota');
+    if(!title||!date||!text){toast('Completa nome, data e nota');return}
     const now=Date.now();
-    const wasEditing=!!editingServiceGeneralNoteId;
-    if(editingServiceGeneralNoteId){
-      const n=serviceNotes.find(x=>x.id===editingServiceGeneralNoteId);
-      if(n)Object.assign(n,{title,date,text,updatedAt:now});
+    const wasEditing=editingServiceGeneralNoteId!==null;
+    const previous=JSON.parse(JSON.stringify(serviceNotes));
+    if(wasEditing){
+      const n=serviceNotes.find(x=>String(x.id)===String(editingServiceGeneralNoteId));
+      if(!n){toast('Nota non trovata');return}
+      Object.assign(n,{recordType:'serviceNote',title,date,text,updatedAt:now});
     }else{
-      serviceNotes.push({id:crypto.randomUUID?crypto.randomUUID():String(now),recordType:'serviceNote',title,date,text,createdAt:now,updatedAt:now});
+      serviceNotes.push({id:newNoteId(),recordType:'serviceNote',title,date,text,createdAt:now,updatedAt:now});
     }
-    save();
-    resetGeneralNoteForm();
+    if(!persistServiceNotes()){
+      serviceNotes=previous;
+      return;
+    }
+    persistAllSafely();
+    resetGeneralNoteForm(true);
     renderServiceNotes(document.getElementById('globalSearch')?.value||'');
     toast(wasEditing?'Nota aggiornata':'Nota salvata');
   });
@@ -8915,11 +8985,11 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     renderServiceNotes(filter);
   };
 
-  document.getElementById('globalSearch').addEventListener('input',e=>{
+  document.getElementById('globalSearch')?.addEventListener('input',e=>{
     if(currentSection==='service')renderServiceNotes(e.target.value);
   });
 
-  resetGeneralNoteForm();
+  resetGeneralNoteForm(true);
   renderServiceNotes('');
 })();
 </script>
