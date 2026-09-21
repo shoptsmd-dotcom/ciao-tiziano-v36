@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="CIAO Tiziano">
-<link rel="apple-touch-icon" href="icon-180.png?v=41">
+<link rel="apple-touch-icon" href="icon-180.png?v=42">
 
 <style>
 :root{
@@ -4864,7 +4864,7 @@ body.home-mode .topbar{
   position:relative!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.18) 100%),
-    url('./home-hero-google.jpg?v=41') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=42') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5121,7 +5121,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
-    url('./home-hero-google.jpg?v=41') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=42') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5173,7 +5173,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:24px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=41') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=42') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before{
@@ -5242,6 +5242,47 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   .dash-parts-hours strong{font-size:18px}
 }
 </style>
+
+<style id="v42-refine">
+/* V42 — CIAO Tiziano di nuovo forte e coerente */
+.brand-mark{font-weight:700!important}
+
+/* Home utilities: tre simboli identici per dimensione e tratto */
+.dashboard-utilities--icons .btn{
+  width:52px!important;min-width:52px!important;height:42px!important;min-height:42px!important;
+  display:grid!important;place-items:center!important;padding:0!important;border-radius:21px!important;
+}
+.dashboard-utilities--icons .util-ico{display:grid!important;place-items:center!important;width:20px!important;height:20px!important;min-width:20px!important}
+.util-icon-svg{width:19px!important;height:19px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.7!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+
+/* Indicatore Scrum: stessa famiglia visiva delle altre card */
+.rightbar .legend{
+  margin-top:16px!important;padding:16px!important;
+  border:1px solid var(--gc-line-soft)!important;border-radius:20px!important;
+  background:#fff!important;box-shadow:var(--gc-shadow)!important;
+  overflow:hidden!important;
+}
+.rightbar .legend>div:first-child{gap:12px!important}
+.rightbar .legend #editScrumBtn{border-radius:16px!important}
+
+/* Servizio: nota direttamente sotto ogni appuntamento */
+.service-note-line{
+  display:block!important;width:fit-content!important;max-width:100%!important;
+  margin:6px 0 0!important;padding:7px 10px!important;
+  border:0!important;border-radius:11px!important;
+  background:var(--gc-control)!important;color:var(--gc-muted)!important;
+  font:inherit!important;font-size:11px!important;line-height:1.4!important;text-align:left!important;
+  white-space:pre-wrap!important;overflow-wrap:anywhere!important;cursor:pointer!important;
+}
+.service-note-line.has-note{color:var(--gc-text)!important}
+.service-note-line.add-note{background:var(--gc-blue-soft)!important;color:var(--gc-blue)!important;font-weight:600!important}
+.service-note-line:active{transform:scale(.985)}
+
+@media(max-width:700px){
+  .rightbar .legend{border-radius:20px!important;margin:12px 0 0!important}
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -8099,6 +8140,17 @@ window.deleteServiceEntry=id=>{
   save();renderService($('globalSearch').value);toast('Appuntamento eliminato');
 };
 
+window.editServiceNote=id=>{
+  const item=serviceEntries.find(x=>x.id===id);if(!item)return;
+  const value=window.prompt('Nota per '+(item.person||'questo appuntamento')+':',item.note||'');
+  if(value===null)return;
+  item.note=String(value).trim();
+  item.updatedAt=Date.now();
+  save();
+  renderService($('globalSearch').value);
+  toast(item.note?'Nota salvata':'Nota rimossa');
+};
+
 
 const likedSortEl=$('likedSpeakerSort');
 if(likedSortEl){
@@ -8331,11 +8383,10 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
       <section class="dashboard-card parts-hours-card"><div class="dash-head"><div><h3>Parti del mese</h3><div class="clean-meta" id="dashPartsMonthLabel"></div></div></div><div class="dash-parts-hours"><div><span>Previste</span><strong id="dashPartsPlanned">0 h</strong></div><div><span>Effettive</span><strong id="dashPartsActual">0 h</strong></div></div></section>
       <section class="dashboard-card"><div class="dash-head"><div><h3>Prossima attività</h3></div></div><div id="dashNextActivity"></div></section>
       <section class="dashboard-card"><div class="dash-head"><div><h3>Servizio del mese</h3></div></div><div class="dash-big" id="dashServiceTotal">0m</div><div class="clean-meta" id="dashServiceMeta"></div></section>
-      <section class="dashboard-card"><div class="dash-head"><div><h3>Prossimo oratore</h3></div></div><div id="dashNextSpeaker"></div></section>
     `;
     const util=document.createElement('div');
     util.className='dashboard-utilities dashboard-utilities--icons';
-    util.innerHTML=`<button class="btn btn-soft" id="dashImportBackupV16" aria-label="Carica salvataggio" title="Carica salvataggio"><span class="util-ico">⤴︎</span></button><button class="btn btn-soft" id="dashExportBackupV16" aria-label="Salva backup" title="Salva backup"><span class="util-ico">⤓</span></button><button class="btn btn-ghost" id="dashOpenReportV16" aria-label="Apri report" title="Apri report"><span class="util-ico">▣</span></button>`;
+    util.innerHTML=`<button class="btn btn-soft" id="dashImportBackupV16" aria-label="Carica salvataggio" title="Carica salvataggio"><span class="util-ico"><svg class="util-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5M8.5 8.5 12 5l3.5 3.5M5 15.5v3.2h14v-3.2"/></svg></span></button><button class="btn btn-soft" id="dashExportBackupV16" aria-label="Salva backup" title="Salva backup"><span class="util-ico"><svg class="util-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v11M8.5 12.5 12 16l3.5-3.5M5 18.7h14"/></svg></span></button><button class="btn btn-ghost" id="dashOpenReportV16" aria-label="Apri report" title="Apri report"><span class="util-ico"><svg class="util-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="13" height="15" rx="2"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4.5"/></svg></span></button>`;
     dashGrid.insertAdjacentElement('afterend',util);
     $('dashImportBackupV16').onclick=()=>$('importBackupFile').click();
     $('dashExportBackupV16').onclick=()=>$('exportBtn').click();
@@ -8364,9 +8415,6 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     $('dashServiceTotal').textContent=serviceDurationLabel(total);
     $('dashServiceMeta').innerHTML=`<span>${serviceMonth.length} appuntamenti</span><span>${serviceMonth.filter(e=>Number(e.durationMinutes||0)>0).length} registrati</span>`;
 
-    const validSpeakers=speakers.filter(s=>s&&s.name&&s.status==='booked'&&s.bookedDate).sort((a,b)=>a.bookedDate.localeCompare(b.bookedDate));
-    const sp=validSpeakers[0];
-    $('dashNextSpeaker').innerHTML=sp?`<div class="dash-row"><div><strong>${esc(sp.name)}</strong><small>${sp.congregation?esc(sp.congregation):'Congregazione non indicata'}</small></div><div class="dash-date ${dashDateClass(sp.bookedDate)}">${esc(fmt(sp.bookedDate))}</div></div>`:'<div class="dash-empty">Nessun oratore prenotato.</div>';
   };
 
   /* Applica stile piatto alle card-lista */
@@ -8440,7 +8488,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     $('serviceTimedCount').textContent=monthEntries.filter(e=>Number(e.durationMinutes||0)>0).length;
     $('serviceList').innerHTML=shown.length?shown.map(e=>{
       const mins=Number(e.durationMinutes||0), has=mins>0;
-      return `<div class="clean-row service-clean-row"><div class="clean-row-main"><div class="clean-title">${esc(e.person)}</div><div class="clean-meta"><span>${esc(fmt(e.date))}</span>${e.time?`<span>${esc(e.time)}</span>`:''}</div>${e.note?`<div class="clean-submeta service-note-text">${esc(e.note)}</div>`:''}</div>
+      return `<div class="clean-row service-clean-row"><div class="clean-row-main"><div class="clean-title">${esc(e.person)}</div><div class="clean-meta"><span>${esc(fmt(e.date))}</span>${e.time?`<span>${esc(e.time)}</span>`:''}</div>${e.note?`<button type="button" class="service-note-line has-note" onclick="editServiceNote('${e.id}')" title="Modifica nota">${esc(e.note)}</button>`:`<button type="button" class="service-note-line add-note" onclick="editServiceNote('${e.id}')">＋ Aggiungi nota</button>`}</div>
       <details class="service-time-details ${has?'has-time':''}"><summary class="${has?'':'thin-icon-button'}" title="${has?'Tempo registrato':'Registra tempo'}" aria-label="${has?'Tempo registrato':'Registra tempo'}">${has?esc(serviceDurationLabel(mins)):`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2"/><path d="M12 8.2v4.1l2.9 1.8"/></svg>`}</summary><div class="service-time-pop"><div><label>Ore</label><input id="serviceRowHours_${e.id}" type="number" min="0" max="24" step="1" inputmode="numeric" value="${Math.floor(mins/60)||''}" placeholder="0"></div><div><label>Min</label><input id="serviceRowMinutes_${e.id}" type="number" min="0" max="59" step="1" inputmode="numeric" value="${mins%60||''}" placeholder="0"></div><button class="small" onclick="saveServiceTime('${e.id}')">Salva</button></div></details>
       ${menuHtml([menuBtn('Modifica appuntamento',`editServiceEntry('${e.id}');document.getElementById('serviceFormCard').classList.add('is-open');document.getElementById('serviceFormCard').scrollIntoView({behavior:'smooth',block:'start'})`),menuBtn('Elimina',`deleteServiceEntry('${e.id}')`,'danger')])}</div>`;
     }).join(''):'<div class="empty">Nessun appuntamento in questo mese.</div>';

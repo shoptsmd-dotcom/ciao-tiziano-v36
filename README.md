@@ -1,7 +1,8 @@
-CIAO Tiziano — V41
+CIAO Tiziano — V42
 
-- Home: riquadro Parti del mese con ore previste ed effettive
-- Servizio: note salvabili per ogni appuntamento
-- Parti: importazione da screenshot con OCR e anteprima modificabile
-- CIAO Tiziano con peso normale
-- Build statica senza service worker
+- CIAO Tiziano in grassetto in tutte le sezioni
+- rimosso Prossimo oratore dalla Home
+- icone Salvataggio / Backup / Report uniformate
+- Indicatore Scrum arrotondato come le altre card
+- note Servizio visibili e modificabili direttamente sotto ogni appuntamento
+- build statica senza service worker
