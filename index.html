@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="TiziApp">
-<link rel="apple-touch-icon" href="icon-180.png?v=46">
+<link rel="apple-touch-icon" href="icon-180.png?v=51">
 
 <style>
 :root{
@@ -3836,7 +3836,6 @@ dialog[open]::backdrop{animation:ramsBackdropIn 190ms ease-out both}
     }
   },true);
   window.addEventListener('resize',function(){document.querySelectorAll('.row-menu[open]').forEach(placeRowMenuV20);});
-  window.addEventListener('scroll',function(){document.querySelectorAll('.row-menu[open]').forEach(placeRowMenuV20);},true);
 })();
 </script>
 
@@ -4865,7 +4864,7 @@ body.home-mode .topbar{
   position:relative!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.18) 100%),
-    url('./home-hero-google.jpg?v=47') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=51') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5122,7 +5121,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
-    url('./home-hero-google.jpg?v=47') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=51') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5174,7 +5173,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:24px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=51') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before{
@@ -5295,7 +5294,7 @@ body{
 .topbar{
   background:
     linear-gradient(180deg,rgba(231,243,244,.04) 0%,rgba(231,243,244,.08) 58%,rgba(231,243,244,.82) 100%),
-    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=51') center 48%/cover no-repeat!important;
   box-shadow:none!important;
   border:1px solid rgba(255,255,255,.28)!important;
 }
@@ -5336,7 +5335,7 @@ body{background:#fff!important}
 .topbar{
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=51') center 48%/cover no-repeat!important;
   border:0!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
@@ -5372,7 +5371,7 @@ body{background:#fff!important}
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=47') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=51') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before, body.home-mode .topbar:before{
@@ -5692,6 +5691,54 @@ html,body{background:#f1f3f4!important}
   }
   .mobile-prompt-head,.modal-head{border-bottom-color:#30353b!important}
   .mobile-prompt-footer,.modal-actions{border-top-color:#30353b!important}
+}
+</style>
+
+
+<style id="v49-ios-scroll-performance">
+/* V49 — scorrimento verticale più fluido su iPhone */
+html,body{
+  scroll-behavior:auto!important;
+  overscroll-behavior-y:auto!important;
+}
+body{
+  -webkit-overflow-scrolling:touch!important;
+}
+/* Evita layer GPU permanenti sulle schermate molto lunghe. */
+#dashboardSection,#partsSection,#activitiesSection,#serviceSection,#gdpSection,#routineSection{
+  will-change:auto!important;
+}
+.screen-swipe-next,.screen-swipe-prev,.swipe-following{
+  will-change:transform,opacity!important;
+}
+/* I blur persistenti sono costosi durante lo scroll su Safari iOS. */
+.section-switch{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  background:rgba(255,255,255,.985)!important;
+}
+.topbar .search,.topbar .quiet-prompt-btn{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  background:rgba(255,255,255,.90)!important;
+}
+@media(prefers-color-scheme:dark){
+  .section-switch{background:rgba(31,32,34,.99)!important}
+  .topbar .search,.topbar .quiet-prompt-btn{background:rgba(42,43,46,.94)!important}
+}
+</style>
+
+<!-- TiziApp V50: Previsto in h/m, senza prefisso -->
+
+<style id="v51-white-background">
+/* V51 — sfondo bianco in modalità chiara */
+html,body{background:#fff!important}
+body{background:#fff!important}
+.shell,.main{background:transparent!important}
+@media(prefers-color-scheme:dark){
+  html,body{background:#101214!important;color:#f1f3f4!important}
+  body{background:#101214!important}
+  .shell,.main{background:transparent!important}
 }
 </style>
 
@@ -6820,7 +6867,7 @@ function renderTasks(filter=''){
           ${t.location?`<span class="compact-location">${esc(t.location)}</span>`:''}
         </div>
         <div class="compact-task-stats">
-          <span>Prev. <strong>${Number(t.hours).toLocaleString('it-IT')} h</strong></span>
+          <span>Prev. <strong>${durationText(Number(t.hours||0)*3600000)}</strong></span>
           <span>Eff. <strong class="actual-time ${running?'running':''}" data-actual-id="${t.id}">${durationText(actualTotalMs(t))}</strong></span>
           ${running?`<span class="timer-live" data-live-id="${t.id}">● ${durationText(currentTimerMs(t),true)}</span>`:''}
         </div>
@@ -6864,7 +6911,7 @@ function renderCompletedTasks(filter=''){
       <div class="datebox"><strong>${esc(fmt(t.date))}</strong><div class="muted">data della parte</div></div>
       <div>
         <div class="completed-badge">⏱ ${durationText(actualTotalMs(t,false))}</div>
-        <div class="muted">effettive · prev. ${Number(t.hours).toLocaleString('it-IT')} h</div>
+        <div class="muted">effettive · prev. ${durationText(Number(t.hours||0)*3600000)}</div>
       </div>
       <div class="actions">
         <button class="iconbtn" title="Ripristina tra le parti attive" onclick="restoreTask('${t.id}')">↺</button>
@@ -6944,7 +6991,7 @@ function renderDashboard(){
       </div>
       <div class="dash-stats">
         <div class="dash-stat"><span>Data</span><strong style="font-size:14px">${esc(fmt(nextPart.date))}</strong></div>
-        <div class="dash-stat"><span>Previsto</span><strong>${Number(nextPart.hours).toLocaleString('it-IT')} h</strong></div>
+        <div class="dash-stat"><span>Previsto</span><strong>${durationText(Number(nextPart.hours||0)*3600000)}</strong></div>
         <div class="dash-stat"><span>Effettivo</span><strong>${durationText(actualTotalMs(nextPart))}</strong></div>
       </div>`;
   }else{
@@ -8763,7 +8810,22 @@ $('importBackupFile').addEventListener('change',async e=>{
 });
 
 
-$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({backupVersion:10,exportedAt:new Date().toISOString(),tasks,prompts,savedTypes,scrumConfig,reportHistory,activities,serviceEntries,serviceNotes,speakers,congregationSpeakers,routines},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='jw-tizi-backup.json';a.click();URL.revokeObjectURL(url)};
+window.exportTiziAppBackup=async function(){
+  const payload={backupVersion:11,exportedAt:new Date().toISOString(),appName:'TiziApp',tasks,prompts,savedTypes,scrumConfig,reportHistory,activities,serviceEntries,serviceNotes,speakers,congregationSpeakers,routines};
+  const text=JSON.stringify(payload,null,2);
+  const date=new Date().toISOString().slice(0,10);
+  const fileName=`TiziApp-backup-${date}.json`;
+  try{
+    const file=new File([text],fileName,{type:'application/json'});
+    if(navigator.canShare && navigator.canShare({files:[file]}) && navigator.share){
+      await navigator.share({files:[file],title:'Backup TiziApp'});
+      return;
+    }
+  }catch(e){}
+  const blob=new Blob([text],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=fileName;a.click();setTimeout(()=>URL.revokeObjectURL(url),1200);
+};
+$('exportBtn').onclick=()=>exportTiziAppBackup();
 $('dashExportBackup').onclick=()=>$('exportBtn').click();
 
 setInterval(()=>{
@@ -8900,7 +8962,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
       return `<div class="clean-row">
         <div class="clean-row-main"><div class="clean-title-line"><div class="clean-title">${esc(t.type)}</div><span class="clean-tag">${effort(t.hours)}</span></div>
         <div class="clean-meta"><span>${esc(fmt(t.date))}</span><span>${esc(label)}</span>${t.location?`<span>${esc(t.location)}</span>`:''}</div>
-        <div class="clean-submeta">Prev. ${Number(t.hours).toLocaleString('it-IT')} h · Eff. <span data-actual-id="${t.id}">${durationText(actualTotalMs(t))}</span>${running?` · <span data-live-id="${t.id}">● ${durationText(currentTimerMs(t),true)}</span>`:''}</div></div>
+        <div class="clean-submeta">Prev. ${durationText(Number(t.hours||0)*3600000)} · Eff. <span data-actual-id="${t.id}">${durationText(actualTotalMs(t))}</span>${running?` · <span data-live-id="${t.id}">● ${durationText(currentTimerMs(t),true)}</span>`:''}</div></div>
         <button class="clean-primary-action thin-icon-button" title="${running?'Ferma timer':'Avvia timer'}" aria-label="${running?'Ferma timer':'Avvia timer'}" onclick="${running?'stopTimer':'startTimer'}('${t.id}')">${running?`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7.5" y="7.5" width="9" height="9" rx="1"/></svg>`:`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 6.8 17 12l-8.5 5.2Z"/></svg>`}</button>
         ${menuHtml([menuBtn('Modifica ore previste',`editTaskPlannedHours('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Completa',`completeTask('${t.id}')`),menuBtn('Prompt GPT',`openTaskPrompt('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}
       </div>`;
@@ -9169,9 +9231,6 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
   window.addEventListener('resize',function(){
     document.querySelectorAll('.row-menu[open]').forEach(placeRowMenu);
   });
-  window.addEventListener('scroll',function(){
-    document.querySelectorAll('.row-menu[open]').forEach(placeRowMenu);
-  },true);
 })();
 </script>
 
@@ -9313,6 +9372,48 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
   load();
   reset(true);
   render();
+})();
+</script>
+
+
+<script id="v51-auto-backup">
+(function(){
+  const AUTO_KEY='tiziapp_auto_backup_v51';
+  let opfsBusy=false;
+  function makePayload(){
+    try{
+      return {backupVersion:11,exportedAt:new Date().toISOString(),appName:'TiziApp',autoBackup:true,tasks,prompts,savedTypes,scrumConfig,reportHistory,activities,serviceEntries,serviceNotes,speakers,congregationSpeakers,routines};
+    }catch(e){return null}
+  }
+  async function writePrivateFile(text){
+    if(opfsBusy || !navigator.storage || !navigator.storage.getDirectory)return;
+    opfsBusy=true;
+    try{
+      const root=await navigator.storage.getDirectory();
+      const dir=await root.getDirectoryHandle('TiziApp',{create:true});
+      const handle=await dir.getFileHandle('ultimo-backup.json',{create:true});
+      const writable=await handle.createWritable();
+      await writable.write(text);
+      await writable.close();
+    }catch(e){}finally{opfsBusy=false}
+  }
+  window.tiziAutoBackupNow=function(){
+    const payload=makePayload();
+    if(!payload)return false;
+    const text=JSON.stringify(payload);
+    try{localStorage.setItem(AUTO_KEY,text)}catch(e){}
+    writePrivateFile(text);
+    return true;
+  };
+  function backupOnExit(){try{save()}catch(e){} tiziAutoBackupNow()}
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)backupOnExit()});
+  window.addEventListener('pagehide',backupOnExit);
+  window.addEventListener('beforeunload',()=>{try{save()}catch(e){};try{const p=makePayload();if(p)localStorage.setItem(AUTO_KEY,JSON.stringify(p))}catch(e){}});
+  window.addEventListener('load',()=>{
+    try{if(navigator.storage && navigator.storage.persist)navigator.storage.persist().catch(()=>{})}catch(e){}
+    setTimeout(tiziAutoBackupNow,1200);
+  });
+  setInterval(()=>{if(!document.hidden)tiziAutoBackupNow()},30000);
 })();
 </script>
 
