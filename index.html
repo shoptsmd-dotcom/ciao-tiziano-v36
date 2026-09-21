@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="CIAO Tiziano">
-<link rel="apple-touch-icon" href="icon-180.png?v=42">
+<link rel="apple-touch-icon" href="icon-180.png?v=43">
 
 <style>
 :root{
@@ -4864,7 +4864,7 @@ body.home-mode .topbar{
   position:relative!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.18) 100%),
-    url('./home-hero-google.jpg?v=42') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=43') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5121,7 +5121,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
-    url('./home-hero-google.jpg?v=42') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=43') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5173,7 +5173,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:24px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
-    url('./home-hero-google.jpg?v=42') center 48%/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=43') center 48%/cover no-repeat!important;
   box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
 }
 .topbar:before{
@@ -5280,6 +5280,48 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
 
 @media(max-width:700px){
   .rightbar .legend{border-radius:20px!important;margin:12px 0 0!important}
+}
+</style>
+
+
+<style id="v43-service-notes-background">
+:root{--app-sky:#e7f3f4;--app-sky-deep:#dceff2;--app-mist:#eff7f5}
+html{background:var(--app-sky)!important}
+body{
+  background:linear-gradient(180deg,var(--app-sky-deep) 0%,var(--app-sky) 24%,var(--app-mist) 100%) fixed!important;
+}
+.shell,.main{background:transparent!important}
+.topbar{
+  background:
+    linear-gradient(180deg,rgba(231,243,244,.04) 0%,rgba(231,243,244,.08) 58%,rgba(231,243,244,.82) 100%),
+    url('./home-hero-google.jpg?v=43') center 48%/cover no-repeat!important;
+  box-shadow:none!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+}
+.topbar:before{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(231,243,244,.18) 62%,rgba(231,243,244,.88))!important}
+.card,.dashboard-card,.clean-list-card,.clean-form-card,.service-total-card{box-shadow:0 1px 3px rgba(60,64,67,.08)!important}
+.planned-hours-row{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
+.planned-hours-edit{width:30px!important;height:30px!important;min-width:30px!important;background:var(--gc-blue-soft)!important;color:var(--gc-blue)!important;font-size:14px!important}
+.service-general-notes-card{overflow:visible!important}
+.service-general-notes-head{align-items:center!important}
+.service-general-note-add{flex:0 0 auto!important;background:var(--gc-blue-soft)!important;color:var(--gc-blue)!important}
+.service-general-note-form-wrap{display:none;padding:0 16px 14px!important}
+.service-general-note-form-wrap.is-open{display:block!important;animation:gcCardIn .18s ease both!important}
+.service-general-note-form{display:grid!important;grid-template-columns:minmax(0,1.2fr) minmax(145px,.7fr)!important;gap:10px!important;padding:14px!important;border-radius:16px!important;background:rgba(255,255,255,.72)!important;border:1px solid var(--gc-line-soft)!important}
+.service-general-note-text-field{grid-column:1/-1!important}
+.service-general-note-text-field textarea{min-height:120px!important;resize:vertical!important}
+.service-general-note-form-actions{grid-column:1/-1!important;display:flex!important;gap:8px!important;justify-content:flex-end!important}
+.service-general-note-list{padding:0 16px 12px!important}
+.service-general-note-row{display:grid!important;grid-template-columns:minmax(0,1fr) 36px!important;gap:10px!important;align-items:start!important;padding:14px 4px!important;border-top:1px solid var(--gc-line-soft)!important}
+.service-general-note-row:first-child{border-top:0!important}
+.service-general-note-title{font-size:14px!important;font-weight:600!important;color:var(--gc-text)!important}
+.service-general-note-date{margin-top:3px!important;font-size:11px!important;color:var(--gc-muted)!important}
+.service-general-note-text{margin-top:8px!important;font-size:13px!important;line-height:1.5!important;color:var(--gc-text)!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important}
+@media(max-width:700px){
+  .service-general-note-form{grid-template-columns:1fr!important}
+  .service-general-note-text-field,.service-general-note-form-actions{grid-column:1!important}
+  .service-general-note-form-actions{justify-content:stretch!important}
+  .service-general-note-form-actions .btn{flex:1 1 0!important}
 }
 </style>
 
@@ -5549,10 +5591,6 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
               <label>Ora</label>
               <input id="serviceTime" type="time" />
             </div>
-            <div class="field service-note-field">
-              <label>Note</label>
-              <textarea id="serviceNote" rows="3" placeholder="Note sull’appuntamento…"></textarea>
-            </div>
             <button class="btn btn-primary" id="serviceSubmitBtn" type="submit">＋ Salva</button>
             <button class="btn btn-ghost" id="serviceCancelEdit" type="button" hidden>Annulla</button>
           </form>
@@ -5567,6 +5605,37 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
           </div>
         </div>
         <div class="service-list" id="serviceList"></div>
+      </section>
+
+      <section class="card service-general-notes-card" id="serviceGeneralNotesCard">
+        <div class="tasks-head service-general-notes-head">
+          <div>
+            <h3>Note di servizio</h3>
+            <div class="muted">Note generali che restano disponibili sempre, indipendentemente dal mese selezionato.</div>
+          </div>
+          <button type="button" class="iconbtn service-general-note-add" id="serviceGeneralNoteAdd" title="Aggiungi nota di servizio" aria-label="Aggiungi nota di servizio">＋</button>
+        </div>
+        <div class="service-general-note-form-wrap" id="serviceGeneralNoteFormWrap">
+          <form id="serviceGeneralNoteForm" class="service-general-note-form">
+            <div class="field">
+              <label>Nome nota</label>
+              <input id="serviceGeneralNoteTitle" required placeholder="Es. Zona da visitare" />
+            </div>
+            <div class="field">
+              <label>Data</label>
+              <input id="serviceGeneralNoteDate" type="date" required />
+            </div>
+            <div class="field service-general-note-text-field">
+              <label>Nota</label>
+              <textarea id="serviceGeneralNoteText" rows="5" required placeholder="Scrivi qui la nota di servizio..."></textarea>
+            </div>
+            <div class="service-general-note-form-actions">
+              <button class="btn btn-primary" type="submit" id="serviceGeneralNoteSave">＋ Salva nota</button>
+              <button class="btn btn-ghost" type="button" id="serviceGeneralNoteCancel">Annulla</button>
+            </div>
+          </form>
+        </div>
+        <div class="service-general-note-list" id="serviceGeneralNoteList"></div>
       </section>
     </div>
 
@@ -6102,7 +6171,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   </div>
 
   <div class="compare">
-    <div class="compare-card"><span>Tempo previsto</span><strong id="modalEstimated">0 h</strong></div>
+    <div class="compare-card planned-hours-card"><span>Tempo previsto</span><div class="planned-hours-row"><strong id="modalEstimated">0 h</strong><button type="button" class="iconbtn planned-hours-edit" id="editPlannedHoursBtn" title="Modifica ore previste" aria-label="Modifica ore previste">✎</button></div></div>
     <div class="compare-card"><span>Tempo effettivo</span><strong id="modalActual">0 h</strong></div>
     <div class="compare-card"><span>Scostamento</span><strong id="modalDelta">0 h</strong></div>
   </div>
@@ -6243,7 +6312,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
 <div class="toast" id="toast">Salvato</div>
 
 <script>
-const STORAGE_TASKS='congregazione_tasks_v1', STORAGE_PROMPTS='congregazione_prompts_v1', STORAGE_TYPES='congregazione_types_v1', STORAGE_SCRUM='congregazione_scrum_v1', STORAGE_REPORT='congregazione_report_history_v1', STORAGE_ACTIVITIES='congregazione_activities_v1', STORAGE_SERVICE='congregazione_service_v1', STORAGE_GDP='congregazione_gdp_v1', STORAGE_GDP_LOCAL='congregazione_gdp_local_v1', STORAGE_ROUTINES='congregazione_routines_v1';
+const STORAGE_TASKS='congregazione_tasks_v1', STORAGE_PROMPTS='congregazione_prompts_v1', STORAGE_TYPES='congregazione_types_v1', STORAGE_SCRUM='congregazione_scrum_v1', STORAGE_REPORT='congregazione_report_history_v1', STORAGE_ACTIVITIES='congregazione_activities_v1', STORAGE_SERVICE='congregazione_service_v1', STORAGE_SERVICE_NOTES='congregazione_service_notes_v1', STORAGE_GDP='congregazione_gdp_v1', STORAGE_GDP_LOCAL='congregazione_gdp_local_v1', STORAGE_ROUTINES='congregazione_routines_v1';
 const STORAGE_GDP_LIKED_SORT='congregazione_gdp_liked_sort_v1';
 let likedSpeakerSort=localStorage.getItem(STORAGE_GDP_LIKED_SORT)||'oldest';
 if(!['oldest','recent','alpha'].includes(likedSpeakerSort))likedSpeakerSort='oldest';
@@ -6257,7 +6326,7 @@ function loadObject(k,f={}){try{const x=JSON.parse(localStorage.getItem(k)||'{}'
 let scrumConfig={...defaultScrum,...loadObject(STORAGE_SCRUM,{})};
 const $=id=>document.getElementById(id);
 function load(k,f){try{const x=JSON.parse(localStorage.getItem(k));return Array.isArray(x)?x:f}catch{return f}}
-let tasks=load(STORAGE_TASKS,[]),prompts=load(STORAGE_PROMPTS,defaultPrompts),savedTypes=load(STORAGE_TYPES,defaultPrompts.map(p=>p.type)),reportHistory=load(STORAGE_REPORT,[]),activities=load(STORAGE_ACTIVITIES,[]),serviceEntries=load(STORAGE_SERVICE,[]),speakers=load(STORAGE_GDP,[]),congregationSpeakers=load(STORAGE_GDP_LOCAL,[]),routines=load(STORAGE_ROUTINES,[]),editingPromptIndex=null,editingServiceId=null,activeTaskId=null,activeTimeTaskId=null,currentSection='parts';
+let tasks=load(STORAGE_TASKS,[]),prompts=load(STORAGE_PROMPTS,defaultPrompts),savedTypes=load(STORAGE_TYPES,defaultPrompts.map(p=>p.type)),reportHistory=load(STORAGE_REPORT,[]),activities=load(STORAGE_ACTIVITIES,[]),serviceEntries=load(STORAGE_SERVICE,[]),serviceNotes=load(STORAGE_SERVICE_NOTES,[]),speakers=load(STORAGE_GDP,[]),congregationSpeakers=load(STORAGE_GDP_LOCAL,[]),routines=load(STORAGE_ROUTINES,[]),editingPromptIndex=null,editingServiceId=null,activeTaskId=null,activeTimeTaskId=null,currentSection='parts';
 
 function migrateTasks(){
   tasks=tasks
@@ -6277,13 +6346,16 @@ function migrateSectionData(){
     .map(s=>({...s,recordType:'localSpeaker',lastTalkDate:s.lastTalkDate||'',preference:String(s.preference||''),createdAt:Number(s.createdAt||Date.now()),updatedAt:Number(s.updatedAt||s.createdAt||Date.now())}));
   serviceEntries=serviceEntries
     .filter(e=>e && typeof e==='object' && typeof e.person==='string' && e.person.trim() && typeof e.date==='string' && e.date)
-    .map(e=>({...e,recordType:'service',time:String(e.time||''),note:String(e.note||''),durationMinutes:Math.max(0,Number(e.durationMinutes||0)),createdAt:Number(e.createdAt||Date.now()),updatedAt:Number(e.updatedAt||e.createdAt||Date.now())}));
+    .map(e=>({...e,recordType:'service',time:String(e.time||''),durationMinutes:Math.max(0,Number(e.durationMinutes||0)),createdAt:Number(e.createdAt||Date.now()),updatedAt:Number(e.updatedAt||e.createdAt||Date.now())}));
+  serviceNotes=serviceNotes
+    .filter(n=>n && typeof n==='object' && String(n.title||'').trim() && String(n.date||'').trim())
+    .map(n=>({...n,recordType:'serviceNote',title:String(n.title||'').trim(),date:String(n.date||''),text:String(n.text||''),createdAt:Number(n.createdAt||Date.now()),updatedAt:Number(n.updatedAt||n.createdAt||Date.now())}));
   routines=routines
     .filter(r=>r && typeof r==='object' && typeof r.name==='string' && r.name.trim())
     .map(r=>({...r,recordType:'routine',text:String(r.text||''),dueDate:r.dueDate||'',createdAt:Number(r.createdAt||Date.now()),updatedAt:Number(r.updatedAt||r.createdAt||Date.now())}));
   save();
 }
-function save(){localStorage.setItem(STORAGE_TASKS,JSON.stringify(tasks));localStorage.setItem(STORAGE_PROMPTS,JSON.stringify(prompts));localStorage.setItem(STORAGE_TYPES,JSON.stringify(savedTypes));localStorage.setItem(STORAGE_SCRUM,JSON.stringify(scrumConfig));localStorage.setItem(STORAGE_REPORT,JSON.stringify(reportHistory));localStorage.setItem(STORAGE_ACTIVITIES,JSON.stringify(activities));localStorage.setItem(STORAGE_SERVICE,JSON.stringify(serviceEntries));localStorage.setItem(STORAGE_GDP,JSON.stringify(speakers));localStorage.setItem(STORAGE_GDP_LOCAL,JSON.stringify(congregationSpeakers));localStorage.setItem(STORAGE_ROUTINES,JSON.stringify(routines))}
+function save(){localStorage.setItem(STORAGE_TASKS,JSON.stringify(tasks));localStorage.setItem(STORAGE_PROMPTS,JSON.stringify(prompts));localStorage.setItem(STORAGE_TYPES,JSON.stringify(savedTypes));localStorage.setItem(STORAGE_SCRUM,JSON.stringify(scrumConfig));localStorage.setItem(STORAGE_REPORT,JSON.stringify(reportHistory));localStorage.setItem(STORAGE_ACTIVITIES,JSON.stringify(activities));localStorage.setItem(STORAGE_SERVICE,JSON.stringify(serviceEntries));localStorage.setItem(STORAGE_SERVICE_NOTES,JSON.stringify(serviceNotes));localStorage.setItem(STORAGE_GDP,JSON.stringify(speakers));localStorage.setItem(STORAGE_GDP_LOCAL,JSON.stringify(congregationSpeakers));localStorage.setItem(STORAGE_ROUTINES,JSON.stringify(routines))}
 
 function historyKey(taskId,sessionId){return `${taskId}::${sessionId}`}
 function sessionToHistory(t,s){
@@ -6342,6 +6414,20 @@ function durationText(ms,withSeconds=false){
 function decimalHours(ms){return ms/3600000}
 function deltaText(t){const delta=actualTotalMs(t)-Number(t.hours||0)*3600000;const sign=delta>60000?'+':delta<-60000?'−':'';return sign+durationText(Math.abs(delta))}
 function getTask(id){return tasks.find(t=>t.id===id)}
+window.editTaskPlannedHours=id=>{
+  const t=getTask(id);if(!t)return;
+  const current=Number(t.hours||0).toLocaleString('it-IT',{maximumFractionDigits:2});
+  const raw=window.prompt('Ore previste per questa parte:',current);
+  if(raw===null)return;
+  const value=Number(String(raw).trim().replace(',','.'));
+  if(!Number.isFinite(value)||value<0.5)return toast('Inserisci almeno 0,5 ore');
+  t.hours=Math.round(value*100)/100;
+  save();
+  renderTasks($('globalSearch').value);
+  if(typeof renderDashboard==='function')renderDashboard();
+  if(activeTimeTaskId===id && $('timeDialog')?.open)renderTimeDialog();
+  toast('Ore previste aggiornate');
+};
 
 function renderTasks(filter=''){
   tasks.sort((a,b)=>a.date.localeCompare(b.date)||a.createdAt-b.createdAt);
@@ -7703,6 +7789,7 @@ window.deleteSession=(taskId,sessionId)=>{
   const t=getTask(taskId);if(!t)return;t.sessions=(t.sessions||[]).filter(s=>s.id!==sessionId);removeHistorySession(taskId,sessionId);save();renderTasks($('globalSearch').value);renderTimeDialog();toast('Sessione eliminata')
 };
 
+$('editPlannedHoursBtn').onclick=()=>editTaskPlannedHours(activeTimeTaskId);
 $('modalStartTimer').onclick=()=>startTimer(activeTimeTaskId);
 $('modalStopTimer').onclick=()=>stopTimer(activeTimeTaskId);
 $('closeTimeDialog').onclick=()=>$('timeDialog').close();
@@ -8038,7 +8125,6 @@ function resetServiceForm(){
   editingServiceId=null;
   $('servicePerson').value='';
   $('serviceTime').value='';
-  if($('serviceNote'))$('serviceNote').value='';
   const month=$('serviceMonth').value||currentMonthISO();
   const today=localTodayISO();
   $('serviceDate').value=today.startsWith(month)?today:`${month}-01`;
@@ -8052,7 +8138,7 @@ function renderService(filter=''){
   const monthEntries=serviceEntries
     .filter(e=>String(e.date||'').slice(0,7)===month)
     .sort((a,b)=>(a.date+' '+(a.time||'')).localeCompare(b.date+' '+(b.time||'')));
-  const shown=monthEntries.filter(e=>!q||[e.person,e.date,e.time,e.note,serviceDurationLabel(e.durationMinutes)].join(' ').toLowerCase().includes(q));
+  const shown=monthEntries.filter(e=>!q||[e.person,e.date,e.time,serviceDurationLabel(e.durationMinutes)].join(' ').toLowerCase().includes(q));
   const total=monthEntries.reduce((s,e)=>s+Number(e.durationMinutes||0),0);
   $('serviceMonthTotal').textContent=serviceDurationLabel(total);
   $('serviceAppointmentCount').textContent=monthEntries.length;
@@ -8065,7 +8151,6 @@ function renderService(filter=''){
           <span>${esc(fmt(e.date))}</span>
           ${e.time?`<span>${esc(e.time)}</span>`:''}
         </div>
-        ${e.note?`<div class="service-entry-note">${esc(e.note)}</div>`:''}
       </div>
       <div class="service-entry-time-editor">
         <div class="service-time-mini">
@@ -8094,14 +8179,14 @@ $('serviceMonth').addEventListener('change',()=>{
 $('serviceCancelEdit').onclick=()=>resetServiceForm();
 $('serviceForm').addEventListener('submit',e=>{
   e.preventDefault();
-  const person=$('servicePerson').value.trim(),date=$('serviceDate').value,time=$('serviceTime').value,note=String($('serviceNote')?.value||'').trim();
+  const person=$('servicePerson').value.trim(),date=$('serviceDate').value,time=$('serviceTime').value;
   if(!person||!date)return;
   const wasEditing=!!editingServiceId;
   if(editingServiceId){
     const item=serviceEntries.find(x=>x.id===editingServiceId);
-    if(item)Object.assign(item,{person,date,time,note,updatedAt:Date.now()});
+    if(item)Object.assign(item,{person,date,time,updatedAt:Date.now()});
   }else{
-    serviceEntries.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),recordType:'service',person,date,time,note,durationMinutes:0,createdAt:Date.now(),updatedAt:Date.now()});
+    serviceEntries.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),recordType:'service',person,date,time,durationMinutes:0,createdAt:Date.now(),updatedAt:Date.now()});
   }
   $('serviceMonth').value=date.slice(0,7);
   save();
@@ -8116,7 +8201,6 @@ window.editServiceEntry=id=>{
   $('servicePerson').value=item.person||'';
   $('serviceDate').value=item.date||'';
   $('serviceTime').value=item.time||'';
-  if($('serviceNote'))$('serviceNote').value=item.note||'';
   $('serviceSubmitBtn').textContent='Salva modifiche';
   $('serviceCancelEdit').hidden=false;
   $('servicePerson').focus();
@@ -8138,17 +8222,6 @@ window.deleteServiceEntry=id=>{
   serviceEntries=serviceEntries.filter(x=>x.id!==id);
   if(editingServiceId===id)resetServiceForm();
   save();renderService($('globalSearch').value);toast('Appuntamento eliminato');
-};
-
-window.editServiceNote=id=>{
-  const item=serviceEntries.find(x=>x.id===id);if(!item)return;
-  const value=window.prompt('Nota per '+(item.person||'questo appuntamento')+':',item.note||'');
-  if(value===null)return;
-  item.note=String(value).trim();
-  item.updatedAt=Date.now();
-  save();
-  renderService($('globalSearch').value);
-  toast(item.note?'Nota salvata':'Nota rimossa');
 };
 
 
@@ -8215,6 +8288,7 @@ function validateBackupPayload(data){
   if(data.reportHistory!==undefined && !Array.isArray(data.reportHistory)) return 'La sezione report del backup non è valida.';
   if(data.activities!==undefined && !Array.isArray(data.activities)) return 'La sezione attività del backup non è valida.';
   if(data.serviceEntries!==undefined && !Array.isArray(data.serviceEntries)) return 'La sezione Servizio del backup non è valida.';
+  if(data.serviceNotes!==undefined && !Array.isArray(data.serviceNotes)) return 'La sezione Note di servizio del backup non è valida.';
   if(data.speakers!==undefined && !Array.isArray(data.speakers)) return 'La sezione GDP del backup non è valida.';
   if(data.congregationSpeakers!==undefined && !Array.isArray(data.congregationSpeakers)) return 'L’elenco oratori della congregazione nel backup non è valido.';
   if(data.routines!==undefined && !Array.isArray(data.routines)) return 'La sezione Routine del backup non è valida.';
@@ -8238,6 +8312,7 @@ async function importBackupFile(file){
     const importedReport=Array.isArray(data.reportHistory)?data.reportHistory:[];
     const importedActivities=Array.isArray(data.activities)?data.activities:[];
     const importedService=Array.isArray(data.serviceEntries)?data.serviceEntries:[];
+    const importedServiceNotes=Array.isArray(data.serviceNotes)?data.serviceNotes:[];
     const importedSpeakers=Array.isArray(data.speakers)?data.speakers:[];
     const importedCongregationSpeakers=Array.isArray(data.congregationSpeakers)?data.congregationSpeakers:[];
     const importedRoutines=Array.isArray(data.routines)?data.routines:[];
@@ -8247,6 +8322,7 @@ async function importBackupFile(file){
     const reportCount=importedReport.length;
     const activityCount=importedActivities.length;
     const serviceCount=importedService.length;
+    const serviceNoteCount=importedServiceNotes.length;
     const speakerCount=importedSpeakers.length;
     const localSpeakerCount=importedCongregationSpeakers.length;
     const routineCount=importedRoutines.length;
@@ -8258,6 +8334,7 @@ async function importBackupFile(file){
       `Voci report: ${reportCount}\n`+
       `Attività: ${activityCount}\n`+
       `Appuntamenti servizio: ${serviceCount}\n`+
+      `Note di servizio: ${serviceNoteCount}\n`+
       `Oratori GDP: ${speakerCount}\n`+
       `Oratori congregazione: ${localSpeakerCount}\n`+
       `Routine: ${routineCount}\n\n`+
@@ -8276,7 +8353,8 @@ async function importBackupFile(file){
     scrumConfig=importedScrum;
     reportHistory=importedReport;
     activities=importedActivities.map(a=>({...a,completedAt:a.completedAt||null,status:a.status||'open',delegatedTo:a.delegatedTo||'',delegatedAt:a.delegatedAt||'',delegateNote:a.delegateNote||''}));
-    serviceEntries=importedService.map(e=>({...e,recordType:'service',person:String(e.person||''),date:String(e.date||''),time:String(e.time||''),note:String(e.note||''),durationMinutes:Math.max(0,Number(e.durationMinutes||0)),createdAt:Number(e.createdAt||Date.now()),updatedAt:Number(e.updatedAt||e.createdAt||Date.now())})).filter(e=>e.person.trim()&&e.date);
+    serviceEntries=importedService.map(e=>({...e,recordType:'service',person:String(e.person||''),date:String(e.date||''),time:String(e.time||''),durationMinutes:Math.max(0,Number(e.durationMinutes||0)),createdAt:Number(e.createdAt||Date.now()),updatedAt:Number(e.updatedAt||e.createdAt||Date.now())})).filter(e=>e.person.trim()&&e.date);
+    serviceNotes=importedServiceNotes.map(n=>({...n,recordType:'serviceNote',title:String(n.title||'').trim(),date:String(n.date||''),text:String(n.text||''),createdAt:Number(n.createdAt||Date.now()),updatedAt:Number(n.updatedAt||n.createdAt||Date.now())})).filter(n=>n.title&&n.date);
     speakers=importedSpeakers.map(s=>({...s,visits:Array.isArray(s.visits)?s.visits:[],status:s.status||'recommended',followUp:!!s.followUp,lastVisitDate:s.lastVisitDate||'',expiryDate:s.expiryDate||'',bookedDate:s.bookedDate||'',bookingNote:s.bookingNote||''}));
     congregationSpeakers=importedCongregationSpeakers.map(s=>({...s,recordType:'localSpeaker',name:String(s.name||''),lastTalkDate:s.lastTalkDate||'',preference:String(s.preference||''),createdAt:Number(s.createdAt||Date.now()),updatedAt:Number(s.updatedAt||s.createdAt||Date.now())})).filter(s=>s.name.trim());
     routines=importedRoutines.map(r=>({...r,recordType:'routine',name:String(r.name||''),text:String(r.text||''),dueDate:r.dueDate||'',createdAt:Number(r.createdAt||Date.now()),updatedAt:Number(r.updatedAt||r.createdAt||Date.now())}));
@@ -8313,7 +8391,7 @@ $('importBackupFile').addEventListener('change',async e=>{
 });
 
 
-$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({backupVersion:9,exportedAt:new Date().toISOString(),tasks,prompts,savedTypes,scrumConfig,reportHistory,activities,serviceEntries,speakers,congregationSpeakers,routines},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='jw-tizi-backup.json';a.click();URL.revokeObjectURL(url)};
+$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({backupVersion:10,exportedAt:new Date().toISOString(),tasks,prompts,savedTypes,scrumConfig,reportHistory,activities,serviceEntries,serviceNotes,speakers,congregationSpeakers,routines},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='jw-tizi-backup.json';a.click();URL.revokeObjectURL(url)};
 $('dashExportBackup').onclick=()=>$('exportBtn').click();
 
 setInterval(()=>{
@@ -8439,7 +8517,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
         <div class="clean-meta"><span>${esc(fmt(t.date))}</span><span>${esc(label)}</span>${t.location?`<span>${esc(t.location)}</span>`:''}</div>
         <div class="clean-submeta">Prev. ${Number(t.hours).toLocaleString('it-IT')} h · Eff. <span data-actual-id="${t.id}">${durationText(actualTotalMs(t))}</span>${running?` · <span data-live-id="${t.id}">● ${durationText(currentTimerMs(t),true)}</span>`:''}</div></div>
         <button class="clean-primary-action thin-icon-button" title="${running?'Ferma timer':'Avvia timer'}" aria-label="${running?'Ferma timer':'Avvia timer'}" onclick="${running?'stopTimer':'startTimer'}('${t.id}')">${running?`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7.5" y="7.5" width="9" height="9" rx="1"/></svg>`:`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 6.8 17 12l-8.5 5.2Z"/></svg>`}</button>
-        ${menuHtml([menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Completa',`completeTask('${t.id}')`),menuBtn('Prompt GPT',`openTaskPrompt('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}
+        ${menuHtml([menuBtn('Modifica ore previste',`editTaskPlannedHours('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Completa',`completeTask('${t.id}')`),menuBtn('Prompt GPT',`openTaskPrompt('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}
       </div>`;
     }).join(''):'<div class="empty">Nessuna parte trovata.</div>';
     $('taskCount').textContent=activeTasks.length;
@@ -8452,7 +8530,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     const qv=String(filter||'').trim().toLowerCase();
     const rows=tasks.filter(t=>t.completedAt).filter(t=>!qv||[t.type,t.location,t.date].join(' ').toLowerCase().includes(qv)).sort((a,b)=>Number(b.completedAt||0)-Number(a.completedAt||0));
     $('completedCount').textContent=tasks.filter(t=>t.completedAt).length;
-    $('completedList').innerHTML=rows.length?rows.map(t=>`<div class="clean-row"><div class="clean-row-main"><div class="clean-title">${esc(t.type)}</div><div class="clean-meta"><span>${esc(fmt(t.date))}</span>${t.location?`<span>${esc(t.location)}</span>`:''}<span>${durationText(actualTotalMs(t,false))} effettive</span></div></div><span class="clean-tag">Completata</span>${menuHtml([menuBtn('Ripristina',`restoreTask('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Prompt GPT',`openTaskPrompt('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}</div>`).join(''):'<div class="empty">Nessuna parte completata.</div>';
+    $('completedList').innerHTML=rows.length?rows.map(t=>`<div class="clean-row"><div class="clean-row-main"><div class="clean-title">${esc(t.type)}</div><div class="clean-meta"><span>${esc(fmt(t.date))}</span>${t.location?`<span>${esc(t.location)}</span>`:''}<span>${durationText(actualTotalMs(t,false))} effettive</span></div></div><span class="clean-tag">Completata</span>${menuHtml([menuBtn('Ripristina',`restoreTask('${t.id}')`),menuBtn('Modifica ore previste',`editTaskPlannedHours('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Prompt GPT',`openTaskPrompt('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}</div>`).join(''):'<div class="empty">Nessuna parte completata.</div>';
   };
 
   /* ---------- Attività ---------- */
@@ -8481,14 +8559,14 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     const month=$('serviceMonth').value||currentMonthISO();
     const qv=String(filter||'').trim().toLowerCase();
     const monthEntries=serviceEntries.filter(e=>String(e.date||'').slice(0,7)===month).sort((a,b)=>(a.date+' '+(a.time||'')).localeCompare(b.date+' '+(b.time||'')));
-    const shown=monthEntries.filter(e=>!qv||[e.person,e.date,e.time,e.note,serviceDurationLabel(e.durationMinutes)].join(' ').toLowerCase().includes(qv));
+    const shown=monthEntries.filter(e=>!qv||[e.person,e.date,e.time,serviceDurationLabel(e.durationMinutes)].join(' ').toLowerCase().includes(qv));
     const total=monthEntries.reduce((s,e)=>s+Number(e.durationMinutes||0),0);
     $('serviceMonthTotal').textContent=serviceDurationLabel(total);
     $('serviceAppointmentCount').textContent=monthEntries.length;
     $('serviceTimedCount').textContent=monthEntries.filter(e=>Number(e.durationMinutes||0)>0).length;
     $('serviceList').innerHTML=shown.length?shown.map(e=>{
       const mins=Number(e.durationMinutes||0), has=mins>0;
-      return `<div class="clean-row service-clean-row"><div class="clean-row-main"><div class="clean-title">${esc(e.person)}</div><div class="clean-meta"><span>${esc(fmt(e.date))}</span>${e.time?`<span>${esc(e.time)}</span>`:''}</div>${e.note?`<button type="button" class="service-note-line has-note" onclick="editServiceNote('${e.id}')" title="Modifica nota">${esc(e.note)}</button>`:`<button type="button" class="service-note-line add-note" onclick="editServiceNote('${e.id}')">＋ Aggiungi nota</button>`}</div>
+      return `<div class="clean-row service-clean-row"><div class="clean-row-main"><div class="clean-title">${esc(e.person)}</div><div class="clean-meta"><span>${esc(fmt(e.date))}</span>${e.time?`<span>${esc(e.time)}</span>`:''}</div></div>
       <details class="service-time-details ${has?'has-time':''}"><summary class="${has?'':'thin-icon-button'}" title="${has?'Tempo registrato':'Registra tempo'}" aria-label="${has?'Tempo registrato':'Registra tempo'}">${has?esc(serviceDurationLabel(mins)):`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2"/><path d="M12 8.2v4.1l2.9 1.8"/></svg>`}</summary><div class="service-time-pop"><div><label>Ore</label><input id="serviceRowHours_${e.id}" type="number" min="0" max="24" step="1" inputmode="numeric" value="${Math.floor(mins/60)||''}" placeholder="0"></div><div><label>Min</label><input id="serviceRowMinutes_${e.id}" type="number" min="0" max="59" step="1" inputmode="numeric" value="${mins%60||''}" placeholder="0"></div><button class="small" onclick="saveServiceTime('${e.id}')">Salva</button></div></details>
       ${menuHtml([menuBtn('Modifica appuntamento',`editServiceEntry('${e.id}');document.getElementById('serviceFormCard').classList.add('is-open');document.getElementById('serviceFormCard').scrollIntoView({behavior:'smooth',block:'start'})`),menuBtn('Elimina',`deleteServiceEntry('${e.id}')`,'danger')])}</div>`;
     }).join(''):'<div class="empty">Nessun appuntamento in questo mese.</div>';
@@ -8709,6 +8787,104 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
   window.addEventListener('scroll',function(){
     document.querySelectorAll('.row-menu[open]').forEach(placeRowMenu);
   },true);
+})();
+</script>
+
+<script id="v43-service-notes-js">
+(function(){
+  let editingServiceGeneralNoteId=null;
+  const formWrap=document.getElementById('serviceGeneralNoteFormWrap');
+  const form=document.getElementById('serviceGeneralNoteForm');
+  const titleEl=document.getElementById('serviceGeneralNoteTitle');
+  const dateEl=document.getElementById('serviceGeneralNoteDate');
+  const textEl=document.getElementById('serviceGeneralNoteText');
+  const saveBtn=document.getElementById('serviceGeneralNoteSave');
+
+  function resetGeneralNoteForm(){
+    editingServiceGeneralNoteId=null;
+    titleEl.value='';
+    dateEl.value=typeof localTodayISO==='function'?localTodayISO():new Date().toISOString().slice(0,10);
+    textEl.value='';
+    saveBtn.textContent='＋ Salva nota';
+    formWrap.classList.remove('is-open');
+  }
+
+  window.renderServiceNotes=function(filter=''){
+    const list=document.getElementById('serviceGeneralNoteList');
+    if(!list)return;
+    const q=String(filter||'').trim().toLowerCase();
+    const rows=[...serviceNotes]
+      .filter(n=>n&&n.title&&n.date)
+      .filter(n=>!q||[n.title,n.date,n.text].join(' ').toLowerCase().includes(q))
+      .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||Number(b.updatedAt||0)-Number(a.updatedAt||0));
+    list.innerHTML=rows.length?rows.map(n=>`<div class="service-general-note-row">
+      <div class="service-general-note-main">
+        <div class="service-general-note-title">${esc(n.title)}</div>
+        <div class="service-general-note-date">${esc(fmt(n.date))}</div>
+        <div class="service-general-note-text">${esc(n.text||'')}</div>
+      </div>
+      ${menuHtml([menuBtn('Modifica',`openServiceGeneralNote('${n.id}')`),menuBtn('Elimina',`deleteServiceGeneralNote('${n.id}')`,'danger')])}
+    </div>`).join(''):'<div class="empty">Nessuna nota di servizio salvata.</div>';
+  };
+
+  window.openServiceGeneralNote=function(id){
+    const n=serviceNotes.find(x=>x.id===id);
+    if(!n)return;
+    editingServiceGeneralNoteId=id;
+    titleEl.value=n.title||'';
+    dateEl.value=n.date||'';
+    textEl.value=n.text||'';
+    saveBtn.textContent='Salva modifiche';
+    formWrap.classList.add('is-open');
+    formWrap.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(()=>titleEl.focus(),220);
+  };
+
+  window.deleteServiceGeneralNote=function(id){
+    if(!confirm('Eliminare questa nota di servizio?'))return;
+    serviceNotes=serviceNotes.filter(n=>n.id!==id);
+    if(editingServiceGeneralNoteId===id)resetGeneralNoteForm();
+    save();
+    renderServiceNotes(document.getElementById('globalSearch')?.value||'');
+    toast('Nota di servizio eliminata');
+  };
+
+  document.getElementById('serviceGeneralNoteAdd').addEventListener('click',()=>{
+    resetGeneralNoteForm();
+    formWrap.classList.add('is-open');
+    setTimeout(()=>titleEl.focus(),80);
+  });
+  document.getElementById('serviceGeneralNoteCancel').addEventListener('click',resetGeneralNoteForm);
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const title=titleEl.value.trim(),date=dateEl.value,text=textEl.value.trim();
+    if(!title||!date||!text)return toast('Completa nome, data e nota');
+    const now=Date.now();
+    const wasEditing=!!editingServiceGeneralNoteId;
+    if(editingServiceGeneralNoteId){
+      const n=serviceNotes.find(x=>x.id===editingServiceGeneralNoteId);
+      if(n)Object.assign(n,{title,date,text,updatedAt:now});
+    }else{
+      serviceNotes.push({id:crypto.randomUUID?crypto.randomUUID():String(now),recordType:'serviceNote',title,date,text,createdAt:now,updatedAt:now});
+    }
+    save();
+    resetGeneralNoteForm();
+    renderServiceNotes(document.getElementById('globalSearch')?.value||'');
+    toast(wasEditing?'Nota aggiornata':'Nota salvata');
+  });
+
+  const previousRenderService=renderService;
+  renderService=function(filter=''){
+    previousRenderService(filter);
+    renderServiceNotes(filter);
+  };
+
+  document.getElementById('globalSearch').addEventListener('input',e=>{
+    if(currentSection==='service')renderServiceNotes(e.target.value);
+  });
+
+  resetGeneralNoteForm();
+  renderServiceNotes('');
 })();
 </script>
 

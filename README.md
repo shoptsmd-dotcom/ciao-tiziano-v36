@@ -1,8 +1,10 @@
-CIAO Tiziano — V42
+CIAO Tiziano — V43
 
-- CIAO Tiziano in grassetto in tutte le sezioni
-- rimosso Prossimo oratore dalla Home
-- icone Salvataggio / Backup / Report uniformate
-- Indicatore Scrum arrotondato come le altre card
-- note Servizio visibili e modificabili direttamente sotto ogni appuntamento
-- build statica senza service worker
+Novità:
+- ore previste delle Parti modificabili anche dopo il salvataggio;
+- rimosse le note legate ai singoli appuntamenti di Servizio;
+- nuova sezione Note di servizio, con nome, data e testo, indipendente dal mese;
+- Note di servizio incluse nei backup;
+- sfondo dell’app coordinato con l’illustrazione dietro CIAO Tiziano per un effetto più uniforme.
+
+Build statica: nessun service worker.
