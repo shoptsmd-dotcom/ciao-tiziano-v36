@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="CIAO Tiziano">
-<link rel="apple-touch-icon" href="icon-180.png?v=39">
+<link rel="apple-touch-icon" href="icon-180.png?v=40">
 
 <style>
 :root{
@@ -4864,7 +4864,7 @@ body.home-mode .topbar{
   position:relative!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.18) 100%),
-    url('./home-hero-google.jpg?v=39') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=40') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5121,7 +5121,7 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
   border-radius:28px!important;
   background:
     linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.16) 100%),
-    url('./home-hero-google.jpg?v=39') center center/cover no-repeat!important;
+    url('./home-hero-google.jpg?v=40') center center/cover no-repeat!important;
   box-shadow:var(--gc-shadow)!important;
   overflow:hidden!important;
 }
@@ -5160,6 +5160,53 @@ body.home-mode .quiet-prompt-btn:hover{background:rgba(255,255,255,.82)!importan
 @media(max-width:700px){
   .topbar{padding:16px 16px 14px!important;border-radius:24px!important;min-height:156px!important}
   .brand-mark{font-size:33px!important}
+}
+</style>
+
+
+<style id="v40-clean-header">
+/* V40 — header più leggero e compatto su iPhone */
+.topbar{
+  min-height:132px!important;
+  padding:14px 16px 12px!important;
+  gap:10px!important;
+  border-radius:24px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.20) 100%),
+    url('./home-hero-google.jpg?v=40') center 48%/cover no-repeat!important;
+  box-shadow:0 2px 10px rgba(60,64,67,.10)!important;
+}
+.topbar:before{
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.34))!important;
+}
+.brand-mark{
+  font-size:31px!important;
+  line-height:1!important;
+  margin-top:0!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.28)!important;
+}
+.topbar .search{
+  min-height:43px!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.78)!important;
+  box-shadow:0 1px 4px rgba(60,64,67,.08)!important;
+}
+.topbar .quiet-prompt-btn{
+  width:38px!important;
+  height:38px!important;
+  min-width:38px!important;
+  background:rgba(255,255,255,.78)!important;
+  box-shadow:0 1px 4px rgba(60,64,67,.08)!important;
+}
+@media(max-width:700px){
+  .topbar{
+    min-height:124px!important;
+    padding:13px 14px 11px!important;
+    border-radius:22px!important;
+    background-position:center 50%!important;
+  }
+  .brand-mark{font-size:29px!important}
+  .topbar .search{min-height:41px!important}
 }
 </style>
 

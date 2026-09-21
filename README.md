@@ -7,3 +7,10 @@ Versione statica senza service worker. Swipe tra sezioni più lento e morbido, c
 - immagine dietro "CIAO Tiziano" in tutte le sezioni
 - placeholder ricerca vuoto
 - cache-busting aggiornato
+
+
+## V40
+- header più compatto e leggero su iPhone
+- immagine invariata in tutte le sezioni
+- ricerca più sottile
+- più spazio utile ai contenuti
