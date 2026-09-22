@@ -1,11 +1,13 @@
-TiziApp V51
+# TiziApp V54 — ChatGPT Calm Style
 
-- sfondo bianco in modalità chiara
-- modalità scura automatica invariata
-- backup automatico interno quando l'app va in background/si chiude
-- il pulsante Backup apre il foglio di condivisione iPhone quando disponibile, per salvare manualmente in File
-- build statica senza service worker
+Base funzionale: V51.
 
+Questa versione mantiene le funzioni della V51 e applica un restyling completo ispirato al mockup ChatGPT: gerarchia più pulita, card leggere, navigazione con icone lineari, azioni rapide, form più morbidi e animazioni swipe sincronizzate.
 
-## V53 Portal Style
-Tema visivo ispirato al portale mostrato dall’utente: testata antracite, accento arancio, ricerca sospesa, card con intestazioni grigio chiaro, azioni blu. Tutte le funzioni della V51 restano invariate.
+Correzioni incluse:
+- timer animazioni swipe sincronizzati (rimosso il taglio a metà transizione)
+- uscita/entrata pagina più morbida
+- blur persistenti rimossi dalle aree fisse per migliorare lo scroll iOS
+- will-change limitato alle sole animazioni attive
+- modalità scura automatica mantenuta
+- backup e funzioni V51 mantenuti
