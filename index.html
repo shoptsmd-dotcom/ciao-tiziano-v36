@@ -7238,7 +7238,7 @@ function renderTasks(filter=''){
       </div>
       <div class="actions compact-task-actions">
         <button class="iconbtn" title="Segna come completata" onclick="completeTask('${t.id}')">✓</button>
-        <button class="iconbtn" title="Prompt" onclick="openTaskPrompt('${t.id}')">✦</button>
+        
         <button class="iconbtn" title="Elimina" onclick="deleteTask('${t.id}')">✕</button>
       </div>
     </div>`
@@ -7276,7 +7276,7 @@ function renderCompletedTasks(filter=''){
       <div class="actions">
         <button class="iconbtn" title="Ripristina tra le parti attive" onclick="restoreTask('${t.id}')">↺</button>
         <button class="iconbtn" title="Dettagli tempo" onclick="openTimeDialog('${t.id}')">◷</button>
-        <button class="iconbtn" title="Prompt" onclick="openTaskPrompt('${t.id}')">✦</button>
+        
         <button class="iconbtn" title="Elimina" onclick="deleteTask('${t.id}')">✕</button>
       </div>
     </div>`).join(''):'<div class="empty">Nessuna parte completata.</div>';
@@ -9324,7 +9324,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
         <div class="clean-meta"><span>${esc(fmt(t.date))}</span><span>${esc(label)}</span>${t.location?`<span>${esc(t.location)}</span>`:''}</div>
         <div class="clean-submeta">Prev. ${durationText(Number(t.hours||0)*3600000)} · Eff. <span data-actual-id="${t.id}">${durationText(actualTotalMs(t))}</span>${running?` · <span data-live-id="${t.id}">● ${durationText(currentTimerMs(t),true)}</span>`:''}</div></div>
         <button class="clean-primary-action thin-icon-button" title="${running?'Ferma timer':'Avvia timer'}" aria-label="${running?'Ferma timer':'Avvia timer'}" onclick="${running?'stopTimer':'startTimer'}('${t.id}')">${running?`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7.5" y="7.5" width="9" height="9" rx="1"/></svg>`:`<svg class="thin-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 6.8 17 12l-8.5 5.2Z"/></svg>`}</button>
-        ${menuHtml([menuBtn('Modifica ore previste',`editTaskPlannedHours('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Completa',`completeTask('${t.id}')`),menuBtn('Prompt GPT',`openTaskPrompt('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}
+        ${menuHtml([menuBtn('Modifica ore previste',`editTaskPlannedHours('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Completa',`completeTask('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}
       </div>`;
     }).join(''):'<div class="empty">Nessuna parte trovata.</div>';
     $('taskCount').textContent=activeTasks.length;
@@ -9337,7 +9337,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     const qv=String(filter||'').trim().toLowerCase();
     const rows=tasks.filter(t=>t.completedAt).filter(t=>!qv||[t.type,t.location,t.date].join(' ').toLowerCase().includes(qv)).sort((a,b)=>Number(b.completedAt||0)-Number(a.completedAt||0));
     $('completedCount').textContent=tasks.filter(t=>t.completedAt).length;
-    $('completedList').innerHTML=rows.length?rows.map(t=>`<div class="clean-row"><div class="clean-row-main"><div class="clean-title">${esc(t.type)}</div><div class="clean-meta"><span>${esc(fmt(t.date))}</span>${t.location?`<span>${esc(t.location)}</span>`:''}<span>${durationText(actualTotalMs(t,false))} effettive</span></div></div><span class="clean-tag">Completata</span>${menuHtml([menuBtn('Ripristina',`restoreTask('${t.id}')`),menuBtn('Modifica ore previste',`editTaskPlannedHours('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Prompt GPT',`openTaskPrompt('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}</div>`).join(''):'<div class="empty">Nessuna parte completata.</div>';
+    $('completedList').innerHTML=rows.length?rows.map(t=>`<div class="clean-row"><div class="clean-row-main"><div class="clean-title">${esc(t.type)}</div><div class="clean-meta"><span>${esc(fmt(t.date))}</span>${t.location?`<span>${esc(t.location)}</span>`:''}<span>${durationText(actualTotalMs(t,false))} effettive</span></div></div><span class="clean-tag">Completata</span>${menuHtml([menuBtn('Ripristina',`restoreTask('${t.id}')`),menuBtn('Modifica ore previste',`editTaskPlannedHours('${t.id}')`),menuBtn('Dettagli tempo',`openTimeDialog('${t.id}')`),menuBtn('Elimina',`deleteTask('${t.id}')`,'danger')])}</div>`).join(''):'<div class="empty">Nessuna parte completata.</div>';
   };
 
   /* ---------- Attività ---------- */
@@ -9471,71 +9471,38 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
 </script>
 
 
-<script id="google-calendar-v31-swipe-js">
+<script id="google-calendar-v56-drawer-swipe-js">
 (function(){
-  const order=['home','parts','activities','service','gdp','routine'];
-  const sectionEl={
-    home:()=>document.getElementById('dashboardSection'),
-    parts:()=>document.getElementById('partsSection'),
-    activities:()=>document.getElementById('activitiesSection'),
-    service:()=>document.getElementById('serviceSection'),
-    gdp:()=>document.getElementById('gdpSection'),
-    routine:()=>document.getElementById('routineSection')
-  };
-  let sx=0,sy=0,lastX=0,lastY=0,startTime=0,tracking=false,horizontal=false,startScreen=null;
-
+  let startX=0,startY=0,lastX=0,lastY=0,tracking=false,edge=false,opening=false;
+  function closeIfNeeded(){tracking=false;edge=false;opening=false;}
   function isBlockedTarget(target){
-    return !!target.closest('input,textarea,select,button,a,summary,details,dialog,[contenteditable="true"],.gdp-tabs,.section-switch,.service-time-pop,.native-row-menu,.row-menu,.liked-sort-wrap');
+    return !!target.closest('input,textarea,select,button,a,summary,details,dialog,[contenteditable="true"],.row-menu,.native-row-menu');
   }
-  function clearDrag(){
-    if(startScreen){
-      startScreen.classList.remove('swipe-following');
-      startScreen.style.removeProperty('--swipe-drag-x');
-    }
-    tracking=false; horizontal=false; startScreen=null;
-  }
-
   document.addEventListener('touchstart',function(e){
     if(e.touches.length!==1 || document.querySelector('dialog[open]')) return;
+    if(isBlockedTarget(e.target)) return;
     const t=e.touches[0];
-    /* Lascia liberi i gesti di navigazione Safari ai bordi dello schermo. */
-    if(t.clientX<24 || t.clientX>window.innerWidth-24 || isBlockedTarget(e.target)) return;
-    sx=lastX=t.clientX; sy=lastY=t.clientY; startTime=Date.now();
-    tracking=true; horizontal=false;
-    const getter=sectionEl[window.currentSection||currentSection];
-    startScreen=getter?getter():null;
-  },{passive:true});
-
+    startX=lastX=t.clientX; startY=lastY=t.clientY; tracking=true;
+    edge=t.clientX<=28; opening=false; 
+  },{passive:true,capture:true});
   document.addEventListener('touchmove',function(e){
     if(!tracking || e.touches.length!==1) return;
     const t=e.touches[0]; lastX=t.clientX; lastY=t.clientY;
-    const dx=lastX-sx, dy=lastY-sy;
-    if(!horizontal && Math.abs(dx)>22 && Math.abs(dx)>Math.abs(dy)*1.65) horizontal=true;
-    if(!horizontal || !startScreen) return;
-    const idx=order.indexOf(window.currentSection||currentSection);
-    const atStart=idx<=0 && dx>0, atEnd=idx>=order.length-1 && dx<0;
-    const resistance=(atStart||atEnd)?0.06:0.22;
-    const drag=Math.max(-38,Math.min(38,dx*resistance));
-    startScreen.classList.add('swipe-following');
-    startScreen.style.setProperty('--swipe-drag-x',drag+'px');
-  },{passive:true});
-
-  document.addEventListener('touchend',function(e){
+    const dx=lastX-startX, dy=lastY-startY;
+    if(!edge) return;
+    if(Math.abs(dx)>18 && Math.abs(dx)>Math.abs(dy)*1.35){
+      opening=true;
+    }
+  },{passive:true,capture:true});
+  document.addEventListener('touchend',function(){
     if(!tracking) return;
-    const dx=lastX-sx, dy=lastY-sy, elapsed=Date.now()-startTime;
-    const idx=order.indexOf(window.currentSection||currentSection);
-    const valid=horizontal && Math.abs(dx)>=62 && Math.abs(dx)>Math.abs(dy)*1.55 && elapsed<1200;
-    clearDrag();
-    if(!valid || idx<0) return;
-    const nextIndex=dx<0?idx+1:idx-1;
-    if(nextIndex<0 || nextIndex>=order.length) return;
-    const direction=dx<0?'next':'prev';
-    /* Ogni sezione si comporta come una nuova pagina. */
-    window.scrollTo({top:0,left:0,behavior:'auto'});
-    switchSection(order[nextIndex],direction);
-  },{passive:true});
-
-  document.addEventListener('touchcancel',clearDrag,{passive:true});
+    const dx=lastX-startX, dy=lastY-startY;
+    if(edge && opening && dx>56 && Math.abs(dx)>Math.abs(dy)*1.2 && typeof window.openTiziSidebar==='function'){
+      window.openTiziSidebar();
+    }
+    closeIfNeeded();
+  },{passive:true,capture:true});
+  document.addEventListener('touchcancel',closeIfNeeded,{passive:true,capture:true});
 })();
 </script>
 
@@ -9778,9 +9745,10 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
 </script>
 
 
-<script id="tiziapp-v55-chatgpt-sidebar-js">
+<script id="tiziapp-v56-chatgpt-sidebar-js">
 (function(){
   const q=(s,r=document)=>r.querySelector(s);
+  const qa=(s,r=document)=>Array.from(r.querySelectorAll(s));
   const nav=q('.section-switch');
   const topbar=q('.topbar');
   if(!nav||!topbar||q('.cgpt-sidebar')) return;
@@ -9793,7 +9761,7 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
     showGdpBtn:'<svg viewBox="0 0 24 24"><circle cx="8.2" cy="8" r="3"/><circle cx="16.4" cy="9" r="2.5"/><path d="M3.5 19c.5-3.2 2-5 4.7-5s4.3 1.8 4.8 5M13.2 18.7c.4-2.4 1.5-3.8 3.4-3.8 2 0 3.1 1.3 3.6 3.8"/></svg>',
     showRoutineBtn:'<svg viewBox="0 0 24 24"><path d="M12 3.7a8.3 8.3 0 1 1-7.2 4.2"/><path d="M4.8 4.6v3.7h3.7M12 7.2v5l3 1.8"/></svg>'
   };
-  [...nav.querySelectorAll('button')].forEach(btn=>{
+  qa('button',nav).forEach(btn=>{
     const label=btn.textContent.trim();
     btn.innerHTML='<span class="cgpt-nav-icon" aria-hidden="true">'+(icons[btn.id]||'')+'</span><span>'+label+'</span>';
   });
@@ -9802,10 +9770,6 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
   sidebar.className='cgpt-sidebar';
   sidebar.innerHTML=`<div class="cgpt-sidebar-head"><div class="cgpt-sidebar-title">TiziApp</div><div style="display:flex;gap:2px"><button type="button" class="cgpt-sidebar-search" aria-label="Cerca"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m16 16 4 4"/></svg></button><button type="button" class="cgpt-sidebar-close" aria-label="Chiudi menu"><svg viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"/></svg></button></div></div><div class="cgpt-sidebar-nav-title">Sezioni</div>`;
   sidebar.appendChild(nav);
-  const spacer=document.createElement('div'); spacer.className='cgpt-sidebar-spacer'; sidebar.appendChild(spacer);
-  const foot=document.createElement('div'); foot.className='cgpt-sidebar-foot';
-  foot.innerHTML=`<button type="button" class="cgpt-prompt-link"><svg viewBox="0 0 24 24"><path d="M12 3.5 13.7 8l4.6 1.7-4.6 1.7L12 16l-1.7-4.6-4.6-1.7L10.3 8Z"/><path d="M18.4 14.7 19.3 17l2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9Z"/></svg><span>Prompt GPT</span></button>`;
-  sidebar.appendChild(foot);
   document.body.appendChild(sidebar);
   const overlay=document.createElement('div'); overlay.className='cgpt-overlay'; document.body.appendChild(overlay);
 
@@ -9815,28 +9779,121 @@ migrateTasks();migrateSectionData();migrateReportHistory();renderPrompts();rende
   topbar.insertBefore(menu,topbar.firstChild);
 
   const brand=q('.brand-mark'); if(brand) brand.textContent='TiziApp';
-  const subtitles={dashboardSection:'Organizza oggi ciò che conta.',partsSection:'Le tue parti, in modo semplice.',activitiesSection:'Tieni sotto controllo ciò che devi fare.',serviceSection:'Appuntamenti, tempo e note di servizio.',gdpSection:'Gestisci gli oratori e gli inviti.',routineSection:'Procedure e promemoria sempre a portata di mano.'};
+  const subtitles={dashboardSection:'',partsSection:'Le tue parti, in modo semplice.',activitiesSection:'Tieni sotto controllo ciò che devi fare.',serviceSection:'Appuntamenti, tempo e note di servizio.',gdpSection:'Gestisci gli oratori e gli inviti.',routineSection:'Procedure e promemoria sempre a portata di mano.'};
   Object.entries(subtitles).forEach(([id,text])=>{
     const section=document.getElementById(id); if(!section) return;
     const hero=section.querySelector('.dashboard-hero,.hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero');
-    if(hero && !hero.querySelector('.cgpt-page-subtitle')){
+    if(!hero) return;
+    const old=hero.querySelector('.cgpt-page-subtitle'); if(old) old.remove();
+    if(text){
       const p=document.createElement('p'); p.className='cgpt-page-subtitle'; p.textContent=text; hero.appendChild(p);
     }
   });
-  const homeHero=document.querySelector('#dashboardSection .dashboard-hero h2'); if(homeHero) homeHero.textContent='CIAO Tiziano';
+  const homeHero=document.querySelector('#dashboardSection .dashboard-hero h2'); if(homeHero) homeHero.textContent='Home';
 
   function openMenu(){document.body.classList.add('cgpt-sidebar-open')}
   function closeMenu(){document.body.classList.remove('cgpt-sidebar-open')}
+  window.openTiziSidebar=openMenu;
+  window.closeTiziSidebar=closeMenu;
   menu.addEventListener('click',openMenu);
   sidebar.querySelector('.cgpt-sidebar-close').addEventListener('click',closeMenu);
   overlay.addEventListener('click',closeMenu);
   overlay.addEventListener('touchstart',e=>{e.stopPropagation()},{passive:true});
   sidebar.querySelector('.cgpt-sidebar-search').addEventListener('click',()=>{closeMenu();setTimeout(()=>{const s=document.getElementById('globalSearch');if(s){s.disabled=false;s.focus()}},250)});
-  sidebar.querySelector('.cgpt-prompt-link').addEventListener('click',()=>{closeMenu();const b=document.getElementById('quietPromptBtn');if(b)b.click()});
   nav.addEventListener('click',e=>{if(e.target.closest('button')) closeMenu()});
-
-  // Keep body scroll stable after closing drawer.
   window.addEventListener('resize',()=>{if(window.innerWidth>900) closeMenu()},{passive:true});
+
+  // Remove prompt references globally.
+  qa('.quiet-prompt-btn,#quietPromptBtn,.cgpt-prompt-link').forEach(el=>el.remove());
+  const homeTop=q('#dashboardSection .topbar');
+  if(homeTop){ homeTop.classList.add('home-essential-topbar'); }
+})();
+</script>
+
+
+<style id="tiziapp-v56-overrides">
+/* Remove GPT prompt shortcuts */
+.quiet-prompt-btn,#quietPromptBtn,.cgpt-prompt-link{display:none!important}
+.cgpt-sidebar-foot{display:none!important}
+
+/* Smoother vertical scrolling */
+html{scroll-behavior:smooth}
+body,.main,.cgpt-sidebar,.section,.card,.routine-reader-scroll{-webkit-overflow-scrolling:touch!important;scroll-behavior:smooth!important}
+
+/* Disable visual hint for page swipe between sections */
+.screen-swipe-next,.screen-swipe-prev,.swipe-following{animation:none!important;transform:none!important}
+
+/* Home: essential, no illustration, no CIAO title */
+#dashboardSection .topbar,
+#dashboardSection .dashboard-hero,
+#dashboardSection .home-essential-topbar{
+  min-height:auto!important;
+  padding:14px 16px!important;
+  border-radius:22px!important;
+  background:#fff!important;
+  background-image:none!important;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.04)!important;
+  border:1px solid #ececec!important;
+}
+#dashboardSection .topbar:before,
+#dashboardSection .dashboard-hero:before,
+#dashboardSection .dashboard-hero:after{display:none!important;content:none!important}
+#dashboardSection .brand-mark{font-size:30px!important;line-height:1.05!important;color:#111!important;text-shadow:none!important}
+#dashboardSection .cgpt-page-subtitle{display:none!important}
+#dashboardSection .search{background:#f7f7f8!important;border:1px solid #ececec!important;box-shadow:none!important}
+#dashboardSection .section-add-btn{display:none!important}
+.jw-links-grid{display:none!important}
+
+/* GDP top menu more ChatGPT-like */
+.gdp-tabs{
+  display:flex!important;
+  gap:10px!important;
+  overflow-x:auto!important;
+  padding:4px 2px 18px!important;
+  margin:0 0 6px!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-width:none!important;
+}
+.gdp-tabs::-webkit-scrollbar{display:none!important}
+.gdp-tabs button{
+  flex:0 0 auto!important;
+  min-height:44px!important;
+  padding:0 18px!important;
+  border:1px solid #ececec!important;
+  border-bottom:1px solid #ececec!important;
+  border-radius:999px!important;
+  background:#f7f7f8!important;
+  color:#6f6f6f!important;
+  font-size:16px!important;
+  font-weight:600!important;
+  box-shadow:none!important;
+}
+.gdp-tabs button.active{
+  background:#ececec!important;
+  color:#111!important;
+  border-color:#e5e5e5!important;
+}
+
+/* Sidebar gesture/menu polish */
+@media(max-width:900px){
+  .main{padding-left:18px!important;padding-right:18px!important}
+  .cgpt-sidebar{transition:transform .34s cubic-bezier(.22,.8,.26,1)!important}
+  .cgpt-overlay{transition:opacity .30s ease!important}
+}
+</style>
+<script id="tiziapp-v56-cleanup-js">
+(function(){
+  const q=(s,r=document)=>r.querySelector(s);
+  const qa=(s,r=document)=>Array.from(r.querySelectorAll(s));
+  function cleanup(){
+    qa('.quiet-prompt-btn,#quietPromptBtn,.cgpt-prompt-link').forEach(el=>el.remove());
+    const homeHero=q('#dashboardSection .dashboard-hero h2, #dashboardSection .topbar .brand-mark');
+    if(homeHero) homeHero.textContent='Home';
+    const links=q('.jw-links-grid'); if(links) links.remove();
+    const homeTitle=q('#dashboardSection .cgpt-page-subtitle'); if(homeTitle) homeTitle.remove();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',cleanup,{once:true});
+  else cleanup();
 })();
 </script>
 
