@@ -8,3 +8,8 @@ Modifiche:
 - “CIAO Tiziano” con tipografia più pulita in stile Google;
 - Home con card grigie neutre e sfondo verde-acqua molto tenue coordinato all’illustrazione;
 - salvataggi automatici V51 invariati.
+
+
+## V51.5
+- Home con sfondo bianco come le altre sezioni
+- Card della Home uniformate al colore delle altre pagine
