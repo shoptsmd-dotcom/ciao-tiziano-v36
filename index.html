@@ -5928,6 +5928,164 @@ body.home-mode .dashboard-utilities .btn{background:rgba(255,255,255,.84)!import
 }
 </style>
 
+
+<style id="v51-4-apple-glass-layout-fix">
+/* V51.4 — testate più grandi, allineamento pulito, Home senza riquadri interni */
+
+/* Testate delle sezioni: più grandi e ariose */
+.dashboard-hero,
+.hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{
+  min-height:154px!important;
+  padding:28px 30px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+  gap:0!important;
+  position:relative!important;
+}
+.dashboard-hero .eyebrow,
+.hero .eyebrow,.activity-hero .eyebrow,.service-hero .eyebrow,.gdp-hero .eyebrow,.routine-hero .eyebrow{
+  margin:0 0 8px!important;
+  padding:0!important;
+  line-height:1.15!important;
+  text-align:left!important;
+}
+.dashboard-hero h2,
+.hero h2,.activity-hero h2,.service-hero h2,.gdp-hero h2,.routine-hero h2{
+  margin:0!important;
+  padding:0!important;
+  line-height:1.04!important;
+  text-align:left!important;
+  letter-spacing:-.035em!important;
+}
+.dashboard-hero p,
+.hero p,.activity-hero p,.service-hero p,.gdp-hero p,.routine-hero p{
+  margin:10px 0 0!important;
+  padding:0!important;
+  text-align:left!important;
+  line-height:1.42!important;
+}
+
+/* Lascia spazio ai comandi Foto/+ senza spostare i titoli */
+.hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{
+  padding-right:150px!important;
+}
+.section-add-btn{
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  right:24px!important;
+}
+.section-add-btn:active{transform:translateY(-50%) scale(.97)!important}
+
+/* Home: card un po' più grandi e testi allineati */
+.dashboard-grid.clean-dashboard{
+  gap:14px!important;
+}
+.clean-dashboard .dashboard-card{
+  min-height:148px!important;
+  padding:22px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+}
+.clean-dashboard .dash-head{
+  margin:0 0 12px!important;
+  min-height:26px!important;
+  align-items:flex-start!important;
+}
+.clean-dashboard .dash-head h3{
+  margin:0!important;
+  line-height:1.2!important;
+  text-align:left!important;
+}
+.clean-dashboard .clean-meta,
+.clean-dashboard .dash-big{
+  text-align:left!important;
+}
+
+/* Niente scatole interne nella Home: i dati stanno direttamente nella card */
+body.home-mode .dash-row,
+body.home-mode .dash-empty,
+body.home-mode .dash-stat,
+body.home-mode .dash-parts-hours>div{
+  background:transparent!important;
+  background-color:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+body.home-mode .dash-row{
+  padding:6px 0!important;
+  border-radius:0!important;
+}
+body.home-mode .dash-empty{
+  padding:10px 0 0!important;
+  border-radius:0!important;
+  text-align:left!important;
+}
+body.home-mode .dash-parts-hours{
+  gap:24px!important;
+  margin-top:4px!important;
+}
+body.home-mode .dash-parts-hours>div{
+  padding:6px 0!important;
+  border-radius:0!important;
+}
+body.home-mode .dash-parts-hours span{
+  margin-bottom:5px!important;
+}
+body.home-mode .dash-parts-hours strong{
+  line-height:1.1!important;
+}
+
+/* Evita che eventuali pseudo-elementi/vecchi bordi creino rettangoli interni */
+body.home-mode .dash-row:before,
+body.home-mode .dash-row:after,
+body.home-mode .dash-empty:before,
+body.home-mode .dash-empty:after{
+  display:none!important;
+  content:none!important;
+}
+
+@media(max-width:700px){
+  .dashboard-hero,
+  .hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{
+    min-height:148px!important;
+    padding:26px 26px!important;
+  }
+  .hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{
+    padding-right:138px!important;
+  }
+  .dashboard-hero h2,
+  .hero h2,.activity-hero h2,.service-hero h2,.gdp-hero h2,.routine-hero h2{
+    font-size:34px!important;
+  }
+  .section-add-btn{right:20px!important}
+  .clean-dashboard .dashboard-card{
+    min-height:154px!important;
+    padding:22px 20px!important;
+  }
+}
+
+@media(max-width:430px){
+  .dashboard-hero,
+  .hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{
+    min-height:142px!important;
+    padding:24px 22px!important;
+  }
+  .hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{
+    padding-right:124px!important;
+  }
+  .dashboard-hero h2,
+  .hero h2,.activity-hero h2,.service-hero h2,.gdp-hero h2,.routine-hero h2{
+    font-size:32px!important;
+  }
+  .clean-dashboard .dashboard-card{min-height:148px!important}
+}
+</style>
+
 </head>
 <body>
 <div class="shell">

@@ -1,10 +1,10 @@
-# TiziApp V51.3 — Apple Glass Fix
+# TiziApp V51.4 — Apple Glass Layout Fix
 
-Base: V51.1 stabile con salvataggi automatici.
+Base: V51.3 stabile con autobackup.
 
-Correzioni:
-- Home realmente bianca (body, shell e main forzati a #fff).
-- Rimosso il conflitto che lasciava la Home grigia.
-- Card Home uniformate alle altre sezioni.
-- Effetto Apple Glass applicato in modo leggero a card, ricerca, pulsanti e form.
-- Nessuna modifica alla logica o ai salvataggi automatici.
+Modifiche:
+- Testate Panoramica/Parti/Attività/Servizio/GDP/Routine più grandi.
+- Testi e titoli allineati in modo coerente.
+- Card Home più grandi.
+- Rimossi i riquadri interni visibili per dati/placeholder nella Home.
+- Apple Glass e tutte le funzioni/autobackup invariati.
