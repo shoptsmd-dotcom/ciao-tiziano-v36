@@ -10,6 +10,5 @@ Modifiche:
 - salvataggi automatici V51 invariati.
 
 
-## V51.5
-- Home con sfondo bianco come le altre sezioni
-- Card della Home uniformate al colore delle altre pagine
+## V51.6
+Correzione definitiva: Home e card Home bianche in modalità chiara, con override ad alta specificità. Nessun cambiamento funzionale.
