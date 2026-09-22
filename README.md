@@ -1,10 +1,9 @@
-TiziApp V51.1 — base V51 bianca con autobackup, senza service worker.
+# TiziApp V51.2 — Home Bianca + Apple Glass
+
+Base: V51.1 stabile con salvataggi automatici.
 
 Modifiche:
-- nascosto il pulsante/riferimento Prompt GPT nella testata di tutte le sezioni;
-- countdown delle Parti in Home ridotto di un giorno, coerente con la sezione Parti;
-- rimosso il contatore visibile delle Routine salvate;
-- rubrica GDP “Graditi” rinominata “Oratori” nelle etichette visibili;
-- “CIAO Tiziano” con tipografia più pulita in stile Google;
-- Home con card grigie neutre e sfondo verde-acqua molto tenue coordinato all’illustrazione;
-- salvataggi automatici V51 invariati.
+- Home con sfondo completamente bianco.
+- Card della Home uniformate al colore/stile delle altre sezioni.
+- Effetto "Apple glass" morbido su card, hero, search bar e pulsanti.
+- Nessuna modifica alle funzionalità o ai salvataggi automatici.
