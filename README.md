@@ -6,3 +6,5 @@ Base funzionale: V51. Nuova sidebar laterale in stile ChatGPT, menu mobile a cas
 V59: ulteriore rifinitura stile ChatGPT, sidebar più coerente, home semplificata, strumenti nel menu laterale, tab GDP migliorati, animazioni e scorrimento più morbidi.
 
 V60: ChatGPT Pure — home e sezioni più minimali, sidebar più fedele, dialog come bottom sheet su iPhone, controlli uniformati e animazioni alleggerite per maggiore fluidità.
+
+V61: layout full-screen continuo in stile ChatGPT, senza contenitore rettangolare principale; card solo dove servono davvero.

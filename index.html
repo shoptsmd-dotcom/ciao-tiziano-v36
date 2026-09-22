@@ -10615,5 +10615,178 @@ body,.main,.cgpt-sidebar,.modal-body,.routine-reader-scroll,.session-list{-webki
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot,{once:true}); else boot();
 })();</script>
 
+
+<style id="tiziapp-v61-fullscreen">
+/* V61 — full-screen surface, no boxed app layout */
+html,body{
+  width:100%!important;
+  min-height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  background:#f7f7f8!important;
+  overflow-x:hidden!important;
+}
+body{min-height:100dvh!important}
+.shell{
+  width:100%!important;
+  max-width:none!important;
+  min-height:100dvh!important;
+  margin:0!important;
+  padding:0!important;
+  display:block!important;
+  background:#f7f7f8!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.main{
+  width:auto!important;
+  max-width:none!important;
+  min-height:100dvh!important;
+  margin-left:var(--cg-sidebar)!important;
+  padding:0 28px 72px!important;
+  background:#f7f7f8!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+/* Top bar is part of the continuous canvas */
+.topbar{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:14px 0 18px!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:#f7f7f8!important;
+}
+.topbar .search{
+  width:100%!important;
+  max-width:none!important;
+  justify-self:stretch!important;
+  border-radius:24px!important;
+}
+/* Main sections are not outer cards */
+#dashboardSection,#partsSection,#activitiesSection,#serviceSection,#gdpSection,#routineSection{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0 0 28px!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.hero,.dashboard-hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:12px 0 18px!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+/* Inner cards only where content benefits from grouping */
+.card,.clean-list-card,.clean-form-card,.dashboard-card,.service-total-card,.speaker-booking-panel{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+/* Home becomes a flowing list rather than a framed panel */
+#dashboardSection .dashboard-grid{
+  width:100%!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+}
+#dashboardSection .dashboard-card{
+  width:100%!important;
+  margin:0!important;
+  padding:18px 0!important;
+  border:0!important;
+  border-bottom:1px solid #e9e9ec!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#dashboardSection .dashboard-card:last-child{border-bottom:0!important}
+#dashboardSection .minimal-home-card{padding-top:6px!important}
+#dashboardSection .home-due-item{
+  margin:0!important;
+  padding:16px 0!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+/* list cards lighter and edge-to-edge */
+.clean-list-card{
+  border:0!important;
+  border-top:1px solid #e9e9ec!important;
+  border-bottom:1px solid #e9e9ec!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.clean-list-card .tasks-head,.clean-list-card .completed-head,.card-head{padding-left:0!important;padding-right:0!important}
+.clean-list-card .tasks,.clean-list-card .completed-list,.clean-list-card .activity-list,.clean-list-card .gdp-list,.clean-list-card .routine-list,.clean-list-card .service-list{padding-left:0!important;padding-right:0!important}
+.clean-row{padding-left:0!important;padding-right:0!important}
+/* Form cards still distinct, like ChatGPT composer/sheets */
+.clean-form-card{
+  border-radius:24px!important;
+  background:#fff!important;
+  border:1px solid #e8e8eb!important;
+  box-shadow:0 1px 2px rgba(0,0,0,.03)!important;
+}
+/* Sidebar remains the only separate surface on desktop */
+.cgpt-sidebar{
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+/* mobile = truly full screen */
+@media(max-width:900px){
+  .main{
+    width:100%!important;
+    margin-left:0!important;
+    padding:0 18px calc(38px + env(safe-area-inset-bottom))!important;
+  }
+  .topbar{
+    position:sticky!important;
+    top:0!important;
+    padding-top:max(10px,env(safe-area-inset-top))!important;
+    z-index:200!important;
+    background:rgba(247,247,248,.97)!important;
+  }
+  .cgpt-sidebar{
+    top:0!important;bottom:0!important;left:0!important;
+    height:100dvh!important;
+    border-radius:0 22px 22px 0!important;
+  }
+  #dashboardSection,#partsSection,#activitiesSection,#serviceSection,#gdpSection,#routineSection{padding-bottom:24px!important}
+  .hero,.dashboard-hero,.activity-hero,.service-hero,.gdp-hero,.routine-hero{padding-top:10px!important}
+  .card,.clean-list-card,.clean-form-card,.dashboard-card,.service-total-card,.speaker-booking-panel{max-width:none!important}
+}
+@media(max-width:520px){
+  .main{padding-left:14px!important;padding-right:14px!important}
+  .topbar{padding-left:0!important;padding-right:0!important}
+}
+@media(prefers-color-scheme:dark){
+  html,body,.shell,.main,.topbar{background:#1f1f21!important}
+  #dashboardSection .dashboard-card{border-bottom-color:#323237!important}
+  .clean-list-card{border-top-color:#323237!important;border-bottom-color:#323237!important}
+  .clean-form-card{background:#252528!important;border-color:#343438!important}
+  .topbar{background:rgba(31,31,33,.97)!important}
+}
+</style>
+<script id="tiziapp-v61-js">(function(){
+  function boot(){
+    document.body.classList.add('tiziapp-fullscreen');
+    const shell=document.querySelector('.shell'); if(shell) shell.classList.add('fullscreen-shell');
+    const main=document.querySelector('.main'); if(main) main.classList.add('fullscreen-main');
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot,{once:true}); else boot();
+})();</script>
+
 </body>
 </html>
